@@ -1,0 +1,912 @@
+<?php
+    
+?>
+<!doctype html>
+<html>
+
+<head>
+    <title>Homewire.app | <?php echo date(Y);?></title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/general-styles.css">
+    <link rel="stylesheet" href="../css/app-specific.css">
+    <script src="https://kit.fontawesome.com/a2763a58b1.js"></script>
+</head>
+
+<body onload="start()">
+    <!--this is the curtain that hides the ui while the page is loading. start() hides/destroys the curtain-->
+    <div class="curtain" id="curtain">
+        <div class="row lw-logo-mesh-div-bg align-items-center" style="height: 100%!important;">
+            <div class="col-md-4">
+                <div class="auto-pass mt-4 text-center">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="auto-pass-checkbox">
+                        <label class="custom-control-label" for="auto-pass-checkbox">Auto-Pass? <span class="fas fa-forward"></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center shadow p-4" style="background: rgb(28,105,99); border-radius: 25px">
+                <p class="titles text-left m-0 text-right" style="font-size: 18px">Homewire.app&trade;</p>
+                <hr style="background: white;">
+                <h1 class="titles text-left m-0">.app</h1>
+                <p class="titles text-left m-0">
+                    <span class="spinner-border spinner-border-sm mb-1" style="height: 6px;width: 6px" role="status" id="curtain-page-load-spinner"><span class="sr-only">Loading...</span></span>
+                    <span id="start-info">Setting things up...</span>
+                </p>
+                <img src="../media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                <p class="p-0 m-0" style="font-size: 4px">Homewire.app&trade; &copy; Adaptiv Media Concept 2021</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <button class="btn btn-light rounded-pill readybtn" style="color: rgb(28,105,99);" id="curtain-ready-button"><span class="fas fa-home"></span> Ready <span class="fas fa-arrow-right"></span></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="activities-navigation-sidebar" class="sidebar lw-logo-mesh-div-bg">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a style="padding-left: 8px !important;" class="text-decoration-none app-home-sidebar-text-logo-bg-hover" id="goto-activity-app" data-toggle="pill" href="#activity-app" role="tab" aria-controls="activity-app" aria-selected="true"><img src="../media/general/icons/simple-brand-banner-bgtransp.png" alt="logo" class="img-fluid"></a>
+
+        <hr>
+
+        <a id="goto-activity-store" href="store.html"><span class="fas fa-store"></span> .Store</a>
+        <a id="goto-activity-social" href="social.html"><span class="fas fa-user-friends"></span> .Social</a>
+        <a id="goto-activity-blog" href="blog.html"><span class="fas fa-blog"></span> .Blog</a>
+        <a id="goto-activity-market" href="admarket.html"><span class="fas fa-ad"></span> .AdMarket</a>
+    </div>
+
+    <div class="" id="main">
+        <div class="lg-logo-mesh-div-bg">
+            <div class="custom-navbar">
+                <nav class="navbar sticky-top shadow" id="sub-custom-nav">
+                    <a class="lw-logo-mesh-div-bg rounded-pill navbar-brand text-white titles px-4 my-4 shadow" style="font-size: 50px" href="#">
+                        <img src="../media/general/icons/simple-brand-banner-bgtransp.png" class="img-fluid ml-2 d-inline-block align-top" alt="" style="height: 100px">
+                    </a>
+                    <ul class="nav justify-content-end lw-logo-mesh-div-bg rounded-pill py-2 px-4">
+                        <li class="nav-item">
+                            <a class="text-truncate nav-link active" data-toggle="collapse" href="#toggle-wallet-manager" role="button" aria-expanded="false" aria-controls="toggle-wallet-manager">Wallet <span class="fas fa-wallet"></span> | R0,00</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="text-truncate nav-link" data-toggle="collapse" href="#toggle-wallet-manager" role="button" aria-expanded="false" aria-controls="toggle-wallet-manager">Coupons <span class="fas fa-ticket-alt"></span> | 0%-off</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="collapse p-4 minimal-v-scroll" id="toggle-wallet-manager" style="max-height: 40vh;overflow-y: auto">
+                    <!--Collapsable container for managing wallet value and discount coupons-->
+                    <div class="row">
+                        <div class="col-md-4 mb-4 lw-logo-mesh-div-bg">
+                            <h4 class="titles"><span class="fas fa-wallet"></span> Wallet Value</h4>
+                            <p style="font-size: 50px">R0,00</p>
+                            <button class="btn store-product-card-buttons rounded-pill">Fill up your wallet</button>
+                        </div>
+                        <div class="col-md-4 lw-logo-mesh-div-bg">
+                            <h4 class="titles"><span class="fas fa-ticket-alt"></span> Discount Coupons</h4>
+                            <p>You have 0%-off worth of Discount Coupons.</p>
+                            <p>Remember, you earn your coupons by contributing
+                                to the Homewire.Social community by posting your
+                                updates, reading and Liking posts, giving users
+                                a Shout-Out, following other users and making friends.<br>
+                                All of this fills up the Community Rewards Bar as well from which you
+                                will be greatly rewarded.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-block store-product-card-buttons rounded-pill my-4" style="font-size: 30px"><span class="fas fa-cash-register"></span> Checkout</button>
+                            <h4 class="titles"><span class="fas fa-shopping-bag"></span> Shopping Bag and Checkout</h4>
+                            <div class="row mt-4">
+                                <div class="col text-center">
+                                    Order Total:
+                                    <p style="font-size: 50px" id="">R0,00</p>
+                                </div>
+                                <div class="col text-center">
+                                    Items in bag:
+                                    <p style="font-size: 50px">0</p>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush my-2 bg-transparent" id="chechout-items-list">
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Cras justo odio</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Dapibus ac facilisis in</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Morbi leo risus</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Porta ac consectetur ac</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Vestibulum at eros</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Cras justo odio</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Dapibus ac facilisis in</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Morbi leo risus</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Porta ac consectetur ac</li>
+                                <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Vestibulum at eros</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <button class="btn openbtn" onclick="openNav()" type="button">
+                                <span class="fas fa-bars" style="font-size: 40px"></span>
+                            </button>
+                        </div>
+                        <div class="col-4 text-center">
+                            <!--<a class="title-logo justify-content-start" href="#">Homewire.app</a>-->
+                            <img src="../media/general/icons/icon-logo.png" class="img-fluid my-4 shadow" style="border-radius: 25px; max-height: 200px; background: rgb(28, 105, 99);" alt="logo">
+                        </div>
+                        <div class="col-4 text-right text-white">
+                            <button class="btn rounded-pill border-3 border-white text-white py-2 px-3" style="max-width: 270px" data-toggle="collapse" href="#toggle-wallet-manager" role="button" aria-expanded="false" aria-controls="toggle-wallet-manager">
+                                <span class="fas fa-shopping-bag" style="font-size: 3vw"></span><span class="pl-1" style="font-size: 3vw"> | 0</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--/.navbar-->
+
+        <!--Inner Tabs / Sub-Tab-->
+        <div class="tab-content" id="app-subtabs-tabContent">
+
+            <div class="tab-pane fade show active" id="app-subtab-home" role="tabpanel" aria-labelledby="activity-app-subtab-home">
+                <div class="section-card-left ml-4 my-4 shadow text-white">
+                    <div class="container-fluid py-4 lg-logo-mesh-div-bg">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h1 class="titles my-2">Welcome to Homewire.app</h1>
+                                <p>
+                                    Homewire is the new amazing platform you have been looking for. Shop with us to get
+                                    the best Discount, Premium and Off-Brand cleaning products and basic cleaning equipment
+                                    for your home. We also have a variety of resources meant to help you make your living
+                                    spaces cleaner, for cheaper, for longer and to have fun while doing so. Visit Homewire.social
+                                    and Homewire.blog to get inspired and informed. Connect to Clean.
+                                </p>
+                                <h1 class="titles my-2">What we offer to our clients &#40;You&#41;</h1>
+                                <p>
+                                    Homewire is the new amazing platform you have been looking for. Shop with us to get
+                                    the best Discount, Premium and Off-Brand cleaning products and basic cleaning equipment
+                                    for your home. We also have a variety of resources meant to help you make your living
+                                    spaces cleaner, for cheaper, for longer and to have fun while doing so. Visit Homewire.social
+                                    and Homewire.blog to get inspired and informed. Connect to Clean.
+                                </p>
+                                <h1 class="titles my-2">Many ways to order your cleaning products</h1>
+                                <ul class="list-group list-group-flush bg-transparent ml-4" style="font-size: 30px">
+                                    <li class="list-group-item bg-transparent border-white"><span class="fas fa-store"></span> Visit our Online Store <span class="fas fa-arrow-right"></span></li>
+                                    <li class="list-group-item bg-transparent border-white"><span class="fas fa-mobile-alt"></span> Call us on </li>
+                                    <li class="list-group-item bg-transparent border-white"><span class="fab fa-whatsapp"></span> Chat with us on </li>
+                                    <li class="list-group-item bg-transparent border-white"><span class="fas fa-envelope"></span> Send an email to</li>
+                                    <li class="list-group-item bg-transparent border-white border-bottom"><span class="fab fa-facebook"></span> Visit our Facebook page at <span class="fas fa-external-link-alt"></span></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="create-user-account shadow-lg">
+                                    <div class="p-4 fixed-lg-logo-mesh-div-bg" style="height: 100%;overflow-y: auto">
+                                        <img src="../media/general/icons/simple-brand-banner-bgtransp.png" alt="logo" class="img-fluid shadow">
+                                        <hr>
+
+                                        <form class="mt-4 px-4 py-2 bg-white shadow" style="border-radius: 25px">
+                                            <h2 class="titles text-center pt-4">Sign Up </h2>
+                                            <p class="titles text-center mb-4">Have an account? <a href="../../login/index.html" class="text-decoration-none">Sign In</a></p>
+
+                                            <div class="form-group">
+                                                <label for="signup-form-names">Your Name and Surname</label>
+                                                <input type="text" class="form-control" id="signup-form-names" placeholder="Name & Surname">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-form-email">Your Email address</label>
+                                                <input type="email" class="form-control" id="signup-form-email" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-form-phone">Your Contact Number</label>
+                                                <input type="phone" class="form-control" id="signup-form-phone" placeholder="Phone number">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="signup-form-password">Your New Password</label>
+                                                <input type="password" class="form-control" id="signup-form-password" placeholder="Phone number">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="signup-form-conf-password">Please Confirm your Password</label>
+                                                <input type="password" class="form-control" id="signup-form-conf-password" placeholder="Phone number">
+                                            </div>
+
+                                            <button class="btn rounded-pill btn-block product-card-buttons shadow-lg mb-4" id="signup-form-btn-submit"><span class="fas fa-paper-plane"></span> Send</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card-right mr-4 my-4 shadow text-white">
+                    <div class="lg-logo-mesh-div-bg">
+                        <div class="container py-4">
+                            <hr>
+                            <h1 class="titles"><span class="fas fa-store"></span>.Store | Top Selling</h1>
+                            <p class="mb-0 text-right my-4"><span class="fas fa-store" style="color: #E43D40"></span> Check out the store <span class="fas fa-arrow-right" style="color: #E43D40"></span></p>
+                            <div class="card-columns">
+
+                                <div class="card product-card">
+                                    <p class="card-text text-center p-1 rounded-pill bg-white text-truncate product-card-tag">Discount</p>
+                                    <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-09-16%20adt%2012.45.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <hr>
+                                        <h4 class="p-2 mb-2 text-center rounded-pill" style="color: rgb(28, 105, 99); background: white;">R106,59</h4>
+                                        <h5 class="card-title">Kleen 1 - Discount Cleaning Kit</h5>
+                                        <p class="card-text">
+                                            A household essential featuring a powerful ammonia cleaner for stubborn grease and grime,
+                                            pine gel for those dirty floors and a reliably wonderful dishwashing liquid.
+                                        </p>
+
+                                        <p class="card-text product-card-specs">Specs:<br>
+                                            1x Kleen Ammonia Cleaner (1L), 1x Kleen Pine Gel (1L), 1x Kleen Dishwashing Liquid (1L).
+                                        </p>
+
+                                        <div class="row align-items-center">
+                                            <div class="col text-right">
+                                                <button class="btn border-3 border-white p-2 rounded-pill product-card-buttons">
+                                                    <span class="fas fa-minus" style="font-size: 25px"></span>
+                                                </button>
+                                            </div>
+                                            <div class="col text-center" style="font-size: 50px">
+                                                1
+                                            </div>
+                                            <div class="col text-left">
+                                                <button class="btn border-3 border-white p-2 rounded-pill product-card-buttons">
+                                                    <span class="fas fa-plus" style="font-size: 25px"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card p-3 text-right product-card bg-white" style="color: rgb(28, 105, 99)" hidden>
+                                    <blockquote class="blockquote mb-0">
+                                        <p>A well-known quote, contained in a blockquote element.</p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                                                Someone famous in <cite title="Source Title">Source Title</cite>
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+
+                                <div class="card product-card" style="background: rgb(28, 105, 99)">
+                                    <p class="card-text text-center p-1 rounded-pill bg-white text-truncate product-card-tag">Discount</p>
+                                    <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-09-16%20at%2012.45%200.png" class="card-img-top" alt="...">
+
+                                    <div class="card-body">
+                                        <hr>
+                                        <h4 class="p-2 mb-2 text-center rounded-pill" style="color: rgb(28, 105, 99); background: white;">R106,59</h4>
+                                        <h5 class="card-title">Kleen 4 - Discount Cleaning Kit</h5>
+                                        <p class="card-text">
+                                            A household essential featuring a powerful ammonia cleaner for stubborn grease and grime,
+                                            pine gel for those dirty floors and a reliably wonderful dishwashing liquid.
+                                        </p>
+
+                                        <p class="card-text product-card-specs">Specs:<br>
+                                            1x Kleen Ammonia Cleaner (1L), 1x Kleen Pine Gel (1L), 1x Kleen Dishwashing Liquid (1L).
+                                        </p>
+
+                                        <div class="row align-items-center">
+                                            <div class="col text-right">
+                                                <button class="btn border-3 border-white p-2 rounded-pill product-card-buttons">
+                                                    <span class="fas fa-minus" style="font-size: 25px"></span>
+                                                </button>
+                                            </div>
+                                            <div class="col text-center" style="font-size: 50px">
+                                                1
+                                            </div>
+                                            <div class="col text-left">
+                                                <button class="btn border-3 border-white p-2 rounded-pill product-card-buttons">
+                                                    <span class="fas fa-plus" style="font-size: 25px"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card p-3 text-right product-card bg-white" style="color: rgb(28, 105, 99)" hidden>
+                                    <blockquote class="blockquote mb-0">
+                                        <p>A well-known quote, contained in a blockquote element.</p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                                                Someone famous in <cite title="Source Title">Source Title</cite>
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+
+                                <div class="card product-card" style="background: rgb(28, 105, 99)">
+                                    <p class="card-text text-center p-1 rounded-pill bg-white text-truncate product-card-tag">Discount</p>
+                                    <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-d09-16%20at%2012.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <hr>
+                                        <h4 class="p-2 mb-2 text-center rounded-pill" style="color: rgb(28, 105, 99); background: white;">R106,59</h4>
+                                        <h5 class="card-title">Kleen 5 - Discount Cleaning Kit</h5>
+                                        <p class="card-text">
+                                            A household essential featuring a powerful ammonia cleaner for stubborn grease and grime,
+                                            pine gel for those dirty floors and a reliably wonderful dishwashing liquid.
+                                        </p>
+
+                                        <p class="card-text product-card-specs">Specs:<br>
+                                            1x Kleen Ammonia Cleaner (1L), 1x Kleen Pine Gel (1L), 1x Kleen Dishwashing Liquid (1L).
+                                        </p>
+
+                                        <div class="row align-items-center">
+                                            <div class="col text-right">
+                                                <button class="btn border-3 border-white p-2 rounded-pill product-card-buttons">
+                                                    <span class="fas fa-minus" style="font-size: 25px"></span>
+                                                </button>
+                                            </div>
+                                            <div class="col text-center" style="font-size: 50px">
+                                                1
+                                            </div>
+                                            <div class="col text-left">
+                                                <button class="btn border-3 border-white p-2 rounded-pill product-card-buttons">
+                                                    <span class="fas fa-plus" style="font-size: 25px"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="bg-white">
+
+                            <div class="row">
+                                <div class="col-md-7 border-right border-white">
+                                    <h1 class="titles"><span class="fas fa-user-friends"></span>.Social | Top Posts</h1>
+
+                                    <div class="" id="top-social-updates-list">
+                                        <!--Start of Update Post-->
+                                        <div class="card profile-updates-card shadow mx-2 my-4" id="updt_timecode_usrid-">
+                                            <div class="fixed-lg-logo-mesh-div-bg">
+                                                <!--Start of Update Post-->
+                                                <div class="card-body bg-white shadow-lg rounded-3" style="border-top-right-radius: 25px">
+                                                    <div class="row align-items-center lg-logo-mesh-div-bg">
+                                                        <div class="col-4">
+                                                            <img src="../media/users/user_default/profile_picture/dfault.png" class="m-2 img-fluid rounded-circle bg-white shadow" alt="profile picture">
+                                                        </div>
+                                                        <div class="col-8 text-right">
+                                                            <a class="card-link titles fw-bold" style="font-size: 30px;"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <p class="text-right mb-0" style="margin-top: -10px"><span class="p-2 bg-white rounded-pill" style="">26 Feb 2021</span></p>
+
+                                                    <p class="card-text p-2" style="border-radius: 25px">
+                                                        <span class="titles">@IARxII_Official</span> said:<br>
+                                                        Loremp ipsumjhgjvjghvhvgchsjvhjcghxjcvbxjhbvc
+                                                        cchjbjhbvcjbvcbjcbvmc
+                                                        mbvcjbvncbbvmcbvmcbvcnbvcnmbvc
+                                                        mbvmcbvcnmbvncbvbc
+                                                        vbncbmmvbc
+                                                    </p>
+                                                    <div id="post-tags-">
+                                                        <span class="titles">Tags:</span>
+                                                        None
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="myupdate-media-att text-center" id="myupdate-media-att" hidden>
+                                                        <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" alt="" class="img-fluid" style="">
+                                                    </div>
+                                                    <div class="profile-update-card-commands shadow px-4" id="">
+                                                        <ul class="list-group list-group-horizontal-sm bg-transparent border-0 fixed-llg-logo-mesh-div-bgz align-items-center" style="overflow-x: auto">
+                                                            <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-comment"></span><span id=""> 3</span></button></li>
+
+                                                            <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-heart"></span><span id=""> 105</span></button></li>
+
+                                                            <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bullhorn"></span><span id=""> 5</span></button></li>
+
+                                                            <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white px-2"><span class="fas fa-bookmark"></span> Keep</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End of Update Post-->
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <h5 class="titles" style="color: rgb(28,105,99);">Connect on .Social</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> Sakhele Surmann | <span class="fas fa-user-plus"></span></li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> Ntombi Ntombz | <span class="fas fa-user-plus"></span></li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> PsychoWeird One | <span class="fas fa-user-plus"></span></li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> Geral Abrahams | <span class="fas fa-user-plus"></span></li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> Lizenda Skoonwinkel | <span class="fas fa-user-plus"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <hr class="bg-white">
+
+                            <h1 class="titles"><span class="fas fa-blog"></span>.Blog | Latest</h1>
+
+                            <div class="row align-items-start" style="height: 100%!important;overflow-y: auto;">
+                                <div class="col-md-4 text-center shadow p-4 m-4" style="background: orange; border-radius: 25px">
+                                    <p class="titles text-left m-0 text-right" style="font-size: 18px">Homewire.app&trade;</p>
+                                    <hr style="background: white;">
+                                    <h1 class="titles text-left m-0">.Blog</h1>
+                                    <p class="titles text-left m=0" hidden>
+                                        <span class="spinner-border spinner-border-sm mb-1" style="height: 6px;width: 6px" role="status"><span class="sr-only">Loading...</span></span>
+                                        Setting things up...
+                                    </p>
+                                    <img src="../media/general/icons/icon-logo.png" class="img-fluid curtain-img" alt="Loading">
+                                    <p class="p-0 m-0" style="font-size: 8px">Homewire.app&trade; &copy; Adaptiv Media Concept 2021</p>
+                                </div>
+                                <div class="col-md text-center">
+                                    <div class="descr-card shadow-lg minimal-v-scroll">
+                                        <div class="ld-logo-mesh-div-bg p-4">
+                                            <div style="background: #202020;border-radius: 25px!important;" class="mb-4">
+                                                <div class="fixed-lw-logo-mesh-div-bg" style="">
+                                                    <img src="../media/general/icons/simple-brand-banner-bgtransp.png" class="img-fluid mb-4" alt="">
+                                                    <h2 class="p-4" style="color: white;margin-top: -84px"><span class="fas fa-hands-helping"></span><br> Become a Member Today!!!</h2>
+                                                </div>
+                                            </div>
+
+                                            <h4><span class="titles">Homewire.Blog</span> is on it's way</h4>
+                                            <p class="text-left">
+                                                We are currently working on the blog and will be revealing it to you soon.<br>
+                                                For the time being, check us out on <span class="titles">Instagram</span>, <span class="titles">Facebook</span>, <span class="titles">Twitter</span> &amp; <span class="titles">Youtube</span>.
+                                            </p>
+                                            <ul class="list-group list-group-flush text-left p-2 shadow">
+                                                <li class="list-group-item border-warning"><span class="fab fa-facebook"></span> <span class="titles">/homeireapp</span></li>
+                                                <li class="list-group-item border-warning"><span class="fab fa-twitter"></span> <span class="titles">@homewire_app</span></li>
+                                                <li class="list-group-item border-warning"><span class="fab fa-instagram"></span> <span class="titles">@homewire_app</span></li>
+                                                <li class="list-group-item border-warning"><span class="fab fa-youtube"></span> <span class="titles">/homewire.otv</span></li>
+                                            </ul>
+                                            <h4 class="mt-4 titles">Let us know</h4>
+                                            <form>
+                                                <div class="form-group text-left">
+                                                    <p>
+                                                        <span class="titles">Homewire&trade;</span> is dedicated to helping clients with cleaning, sanitation and organizating solutions for home, office &amp; everything in between.
+                                                        Your feedback will help us help others.
+                                                    </p>
+                                                    <span class="titles">Questions:</span>
+                                                    <p class="pl-4">
+                                                        1. What is the most challenging aspect of keeping your home clean? <br>
+                                                        2. If you are managing to keep your living and working spaces nice and tidy, what exactly is it that you are doing?
+                                                    </p>
+
+                                                    <textarea class="form-control mb-4 p-4 border border-warning shadow-lg" id="exampleFormControlTextarea1" rows="10" placeholder="Type out your response here."></textarea>
+                                                    <button class="btn btn-warning btn-block p-4 rounded-pill shadow-lg titles"><span class="fas fa-paper-plane"></span> Share</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer section-card-left ml-4 my-4 shadow text-white">
+                    <div class="lw-logo-mesh-div-bg">
+                        <div class="container py-4">
+                            <div class="row">
+                                <div class="col">
+                                    <h1 class="titles"><span class="fas fa-ad"></span>.AdMarket | Featured</h1>
+
+                                    <div class="card-deck mr-2" id="admarket-featured-posts">
+                                        <div class="card p-2 admarket-cards border-top border-bottomz shadow-lg">
+                                            <ul class="list-group list-group-horizontal-sm align-items-center mb-2">
+                                                <li class="p-0 m-0 list-group-item bg-transparent border-0 pl-2 flex-fill">
+                                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="post title" class="img-fluid bg-white rounded-pill shadow rounded-3 mb-1" style="height: 20px;width: 20px">
+                                                    <h5 class="card-title">Suzan Jolena</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Seller | <br><span class="fas fa-map-marked-alt"></span> <span style="font-size: 10px" id="admarket-post-user-address">Address here</span></h6>
+                                                </li>
+                                                <li class="p-0 m-0 list-group-item bg-transparent border-0 text-center pr-4" id="admarket-post-image">
+                                                    <img src="../media/users/user_default/library/admarket/kbae.jpg" alt="post title" class="shadow-lg">
+                                                </li>
+                                            </ul>
+
+                                            <div class="card-body m-0 p-0 pl-4 border-left fixed-lw-logo-mesh-div-bg minimal-v-scroll" style="height:5rem; overflow-y: auto">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                            <div class="card-body fixed-lw-logo-mesh-div-bg">
+                                                <a href="#" class="card-link">Send me a message</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="card p-2 admarket-cards border-top border-bottomz shadow-lg">
+                                            <ul class="list-group list-group-horizontal-sm align-items-center mb-2">
+                                                <li class="p-0 m-0 list-group-item bg-transparent border-0 pl-2 flex-fill">
+                                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="post title" class="img-fluid bg-white rounded-pill shadow rounded-3 mb-1" style="height: 20px;width: 20px">
+                                                    <h5 class="card-title">Suzan Jolena</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Seller | <br><span class="fas fa-map-marked-alt"></span> <span style="font-size: 10px" id="admarket-post-user-address">Address here</span></h6>
+                                                </li>
+                                                <li class="p-0 m-0 list-group-item bg-transparent border-0 text-center pr-4" id="admarket-post-image">
+                                                    <img src="../media/users/user_default/library/admarket/kbae.jpg" alt="post title" class="shadow-lg">
+                                                </li>
+                                            </ul>
+
+                                            <div class="card-body m-0 p-0 pl-4 border-left fixed-lw-logo-mesh-div-bg minimal-v-scroll" style="height:5rem; overflow-y: auto">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                            <div class="card-body fixed-lw-logo-mesh-div-bg">
+                                                <a href="#" class="card-link">Send me a message</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="card p-2 admarket-cards border-top border-bottomz shadow-lg">
+                                            <ul class="list-group list-group-horizontal-sm align-items-center mb-2">
+                                                <li class="p-0 m-0 list-group-item bg-transparent border-0 pl-2 flex-fill">
+                                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="post title" class="img-fluid bg-white rounded-pill shadow rounded-3 mb-1" style="height: 20px;width: 20px">
+                                                    <h5 class="card-title">Suzan Jolena</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Seller | <br><span class="fas fa-map-marked-alt"></span> <span style="font-size: 10px" id="admarket-post-user-address">Address here</span></h6>
+                                                </li>
+                                                <li class="p-0 m-0 list-group-item bg-transparent border-0 text-center pr-4" id="admarket-post-image">
+                                                    <img src="../media/users/user_default/library/admarket/kbae.jpg" alt="post title" class="shadow-lg">
+                                                </li>
+                                            </ul>
+
+                                            <div class="card-body m-0 p-0 pl-4 border-left fixed-lw-logo-mesh-div-bg minimal-v-scroll" style="height:5rem; overflow-y: auto">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                            <div class="card-body fixed-lw-logo-mesh-div-bg">
+                                                <a href="#" class="card-link">Send me a message</a>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="bg-white">
+
+                            <div class="row my-4" id="footer-grid">
+                                <div class="col-md-4">
+                                    <h4 class="titles py-2">More from us</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">About Us</li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Contact Us</li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Donate your points to charity</li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4 border-white border-left border-right">
+                                    <h4 class="titles py-2">Important Info</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><button class="btn btn-danger rounded-pill"><span class="fas fa-virus mr-2"></span>Coronvirus Updates</button></li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Terms of use</li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Privacy policy</li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">AdMarket public posting policy</li>
+                                        <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Refund policy</li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h4 class="titles py-2">Order and Collect</h4>
+                                    <p>We can be found here:</p>
+                                    <iframe class="rounded-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.4750917790557!2d27.881837207161364!3d-26.246239995479634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95a7261884eacd%3A0xc2b73167b663eae3!2sWashday%20laundry%20Service!5e0!3m2!1sen!2sza!4v1611818393816!5m2!1sen!2sza" width="100%" height="400px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="app-subtab-profile" role="tabpanel" aria-labelledby="activity-app-subtab-profile">
+                <!--Full width Banner image-->
+                <div class="profile-banner" id="profile-banner"></div>
+                <div class="section-card-right mr-4 my-4 shadow text-white">
+                    <div class="container-fluid py-4 lg-logo-mesh-div-bg">
+                        <div class="text-right" id="users-label">
+                            <button class=" btn p-2 shadow rounded-pill text-white"><span class="fas fa-comments text-white" style="font-size: 40px"></span> Chat</button>
+                        </div>
+
+                        <div class="row">
+                            <hr>
+                            <div class="col-md-4 text-center">
+                                <img src="../media/users/user_default/profile_picture/me.jpg" alt="username" class="img-fluid rounded-pill bg-white shadow border border-white border-3" style="max-height: 300px;margin-top: -300px">
+                                <div class="profile-card p-4 shadow mt-4">
+
+                                    <h1 class="titles fw-bold mt-3 sticky-top text-center"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</h1>
+                                    <button class="btn shadow rounded-pill p-4 mx-1"><span class="fas fa-user-plus"></span> Request</button>
+                                    <button class="btn shadow rounded-pill p-4 mx-1"><span class="fas fa-plus"></span> Follow</button>
+                                    <hr>
+                                    <ul class="list-group list-group-horizontal-sm bg-transparent border-0">
+                                        <li class="list-group-item flex-fill bg-transparent border-0"><span class="">0</span> | Followers</li>
+                                        <li class="list-group-item flex-fill bg-transparent border-0"><span class="">0</span> | Following</li>
+                                    </ul>
+                                    <hr>
+
+                                    <p id="bio">
+                                        About Me
+                                        <br>
+                                        This is the Bio/Description of the user. They can
+                                        expres themselves in brief.
+                                    </p>
+                                    <hr>
+                                    <p id="bio">
+                                        Media
+                                    </p>
+                                    <div class="card-columns">
+                                        <div class="card bg-transparent">
+                                            <img src="../media/users/user_default/library/kbae.jpg" class="card-img-top" alt="..." style="border-radius: 25px">
+                                        </div>
+                                        <div class="card bg-transparent">
+                                            <img src="../media/users/user_default/library/me.jpg" class="card-img-top" alt="..." style="border-radius: 25px">
+                                        </div>
+                                        <div class="card bg-transparent">
+                                            <img src="../media/users/user_default/library/WIN_20200127_14_16_58_Pro.jpg" class="card-img-top" alt="..." style="border-radius: 25px">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-5 border-left border-right border-white">
+                                <h2 class="titles fw-bold">My Updates</h2>
+                                <hr>
+                                <div class="" id="myupdates-list">
+                                    <div class="card profile-updates-card shadow mx-2 my-4" id="updt_timecode_usrid-">
+                                        <div class="fixed-lg-logo-mesh-div-bg">
+                                            <!--Start of Update Post-->
+                                            <div class="card-body">
+                                                <a class="card-link titles fw-bold" style="font-size: 30px;"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</a>
+                                                <a class="card-link">26 Feb 2021</a>
+
+                                                <p>
+                                                    Loremp ipsumjhgjvjghvhvgchsjvhjcghxjcvbxjhbvc
+                                                    cchjbjhbvcjbvcbjcbvmc
+                                                    mbvcjbvncbbvmcbvmcbvcnbvcnmbvc
+                                                    mbvmcbvcnmbvncbvbc
+                                                    vbncbmmvbc
+                                                    <br>
+                                                    bnmbvcnmbvmcbvmbcnmbv
+                                                </p>
+                                                <hr>
+                                                <div class="myupdate-media-att text-center" id="myupdate-media-att">
+                                                    <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" alt="" class="img-fluid" style="">
+                                                </div>
+                                                <hr>
+                                                <div class="profile-update-card-commands px-4" id="">
+                                                    <ul class="list-group list-group-horizontal-sm bg-transparent border-0 fixed-lw-logo-mesh-div-bg">
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-heart"></span><span id=""> 105</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bullhorn"></span><span id=""> 5</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bookmark"></span></button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--End of Update Post-->
+
+                                    <div class="text-center">
+                                        <hr>
+                                        <img src="../media/general/icons/icon-logo.png" style="height: 50px; width: 50px" alt="end of updates">
+                                    </div>
+                                    <!--
+                                        End of Updates/Update Posts
+                                    -->
+                                </div>
+                            </div>
+                            <div class="col-md-2 mt-5">
+                                <h3 class="titles fw-bolder border-top border-white pt-2" style="color: rgb(28,105,99);">Topics</h3>
+                                <hr>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><span class="fas fa-thumbtack" style=""></span><br> Cleaning Tips &amp; Tricks</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Sanitation</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">Community Health and Safety</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;">How to use .AdMarket</li>
+                                </ul>
+
+                                <h3 class="titles fw-bolder border-top border-white pt-2" style="color: rgb(28,105,99);">Friends</h3>
+                                <hr>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> <br> Thabo Mbokazi</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> <br> Zelda Sterken</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> <br> Thato Tholi</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> <br> Kholofelo Labelo</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;"> <br> Zenzo Ndambi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer section-card-left ml-4 my-4 shadow text-white"></div>
+            </div>
+            <div class="tab-pane fade" id="app-subtab-notifications" role="tabpanel" aria-labelledby="activity-app-subtab-notifications">
+                ...
+            </div>
+            <div class="tab-pane fade" id="app-subtab-bookmarks" role="tabpanel" aria-labelledby="activity-app-subtab-bookmarks">
+                ...
+            </div>
+        </div>
+        <!--/. End of Inner Tabs / Sub-Tab-->
+
+        <div class="fixed-bottom tab-nav align-items-center shadow" id="footer">
+            <div class="container text-left">
+                <div class="row align-items-end my-2">
+                    <div class="col-4" style="">
+                        <div class="h-scrolling-wrapper minimal-h-scroll" style="border-radius: 25px">
+                            <div class="h-scroll-card mb-2">
+                                <button class="btn openbtn" onclick="openNav()" type="button">
+                                    <span class="fas fa-bars" style="font-size: 40px"></span>
+                                </button>
+                            </div>
+                            <div class="h-scroll-card mb-2">
+                                <button class="btn store-product-card-buttons rounded-pill p-2 my-1 mr-2 shadow" style="color: rgb(28, 105, 99); font-size: 20px !important">
+                                    <span class="fas fa-arrow-up"></span>
+                                </button>
+                            </div>
+                            <div class="h-scroll-card mb-2">
+                                <a href="" class="text-decoration-none py-2 my-1 text-truncate" id="tab-nav-copyright">Adaptiv Media Concept &copy; 2021</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <img src="../media/general/icons/simple-brand-banner-bgtransp.png" style="height: 50px; background: rgb(28,105,99); border-radius: 15px" alt="end of updates">
+                    </div>
+                    <div class="col-4 text-right">
+                        <div style="color: #104210" data-toggle="collapse" href="#footer-collapse" role="button" aria-expanded="false" aria-controls="footer-collapse">
+                            <span id="hide-text" hidden><span class="fas fa-compress-alt"></span> Expand</span>
+                            <span id="show-text"><span class="fas fa-expand-alt"></span> Expand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="footer-collapse">
+                    <div class="row align-items-center mt-2">
+                        <div class="col text-left">
+                            <ul class="nav justify-content-start mb-4 mt-2">
+                                <li class="nav-item border-right">
+                                    <a class="nav-link focused" id="activity-app-subtab-home" data-toggle="pill" href="#app-subtab-home" role="tab" aria-controls="app-subtab-home" aria-selected="true">
+                                        <span class="fas fa-ellipsis-v"></span> More
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col text-right">
+                            <button class="btn store-product-card-buttons p-2 my-3" style="font-size: 18px !important;2vw; border-radius: 25px">
+                                <img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;">
+                                <span class="fas fa-check-circle" style="color: goldenrod"></span>
+                                | <span class="fas fa-wallet"></span> R0,00 | <span class="fas fa-ticket-alt"></span> 0%-off
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container text-left" hidden>
+                <div class="row align-items-center mt-2">
+                    <div class="col text-left">
+                        <button class="btn product-card-buttons rounded-pill p-2 shadow" style="color: rgb(28, 105, 99); font-size: 20px">
+                            <span class="fas fa-chevron-circle-up"></span>
+                        </button>
+                        <img src="../media/general/icons/simple-brand-banner-bgtransp.png" style="height: 50px;" alt="end of updates">
+                        <a href="" class="text-decoration-none py-2" id="tab-nav-copyright">Adaptiv Media Concept &copy; 2021</a>
+                    </div>
+
+                    <div class="col text-right">
+
+                        <button class="btn product-card-buttons rounded-pill py-2 mr-2" style="font-size: 18px !important;2vw">
+                            <img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;">
+                            <span class="fas fa-check-circle" style="color: goldenrod"></span>
+                            | <span class="fas fa-wallet"></span> R0,00 | <span class="fas fa-ticket-alt"></span> 0%-off
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <ul class="nav justify-content-end mb-4 mt-2">
+                    <li class="nav-item border-right">
+                        <a class="nav-link focused" id="activity-app-subtab-home" data-toggle="pill" href="#app-subtab-home" role="tab" aria-controls="app-subtab-home" aria-selected="true"><span class="fas fa-home"></span></a>
+                    </li>
+                    <li class="nav-item border-right">
+                        <a class="nav-link" id="activity-app-subtab-profile" data-toggle="pill" href="#app-subtab-profile" role="tab" aria-controls="app-subtab-profile" aria-selected="false"><span class="fas fa-user"></span></a>
+                    </li>
+                    <li class="nav-item border-right">
+                        <a class="nav-link" id="activity-app-subtab-notifications" data-toggle="pill" href="#app-subtab-notifications" role="tab" aria-controls="app-subtab-notifications" aria-selected="false"><span class="fas fa-bell"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="activity-app-subtab-bookmarks" data-toggle="pill" href="#app-subtab-bookmarks" role="tab" aria-controls="app-subtab-bookmarks" aria-selected="fale"><span class="fas fa-bookmark"></span></a>
+                    </li>
+                    <!--<li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">&copy; 2021 Adaptiv Media Concept</a>
+                </li>-->
+                </ul>
+            </div>
+
+
+        </div>
+
+        <!--Activity Tabs - We will be using activity tabs to embed a sub-tabs for activity
+            specific tabbed content-->
+        <!--Activity Tabs Starts here-->
+        <!--<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+            </li>
+        </ul>-->
+        <!--<div class="tab-content" id="activities-tabContent">
+            <div class="tab-pane fade show active" id="activity-app" role="tabpanel" aria-labelledby="goto-activity-app">
+
+
+            </div>
+            <div class="tab-pane fade" id="activity-store" role="tabpanel" aria-labelledby="goto-activity-store">
+                ...
+            </div>
+            <div class="tab-pane fade" id="activity-social" role="tabpanel" aria-labelledby="goto-activity-social">...</div>
+            <div class="tab-pane fade" id="activity-blog" role="tabpanel" aria-labelledby="goto-activity-blog">...</div>
+            <div class="tab-pane fade" id="activity-market" role="tabpanel" aria-labelledby="goto-activity-market">...</div>
+        </div>-->
+        <!--Activity Tabs Ends here-->
+
+    </div>
+
+    <script>
+        function start() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            var startInfoOutput = document.getElementById("start-info");
+            var spinner = document.getElementById("curtain-page-load-spinner");
+            var readybtn = document.getElementById("curtain-ready-button");
+            spinner.style.display = "none";
+            startInfoOutput.innerHTML = '- Great. You are good to go.';
+            readybtn.style.marginBottom = "0";
+
+        }
+
+
+        function openNav() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+            //alert("Width: " + vw + " | Height: " + vh);
+
+            if (vw <= 800) {
+                document.getElementById("activities-navigation-sidebar").style.width = "250px";
+                document.getElementById("sub-custom-nav").style.marginLeft = "250px";
+                document.getElementById("main").style.marginLeft = "0px";
+                document.getElementById("footer").style.marginBottom = "-90px";
+            } else {
+                document.getElementById("activities-navigation-sidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.getElementById("footer").style.marginBottom = "-90px";
+            }
+
+            document.getElementById("sub-custom-nav").style.borderTopLeftRadius = "25px";
+        }
+
+        function closeNav() {
+            document.getElementById("activities-navigation-sidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("sub-custom-nav").style.marginLeft = "0";
+            document.getElementById("footer").style.marginBottom = "0";
+        }
+
+        document.getElementById("curtain-ready-button").addEventListener("click", function() {
+            //slide the .curtain div out of view to the left
+            document.getElementById("curtain").style.display = "none";
+        });
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body>
+
+</html>

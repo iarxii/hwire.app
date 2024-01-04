@@ -1,0 +1,176 @@
+/*Palette
+
+*/
+
+
+/*Author: Mr. Thabang Mposula 2021*/
+html {
+    background: orange;
+}
+/*Custom - Scrollbar for html*/
+/* width */
+html::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+html::-webkit-scrollbar-track {
+    background: orange!important;
+    padding-top: 5px;
+    margin: 10px 0;
+    border-radius: 50rem; /* 0 15px 15px 0*/
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+    background: #fff!important;
+    border-radius: 50rem;
+    border: solid 6px orange;
+}
+
+/* end custom scrollbar*/
+
+.curtain {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    background: orange;
+    z-index: 11000;
+    color: white;
+}
+.curtain-img {
+    margin-top: -40px !important;
+}
+.curtain p {
+    font-size: 8px;
+    color: #202020;
+}
+
+.fixed-ld-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-dark-1.png)!important;
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.ld-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-dark-1.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.lw-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lw.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-lw-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lw-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.descr-card {
+    border-radius: 25px;
+    background: white;
+    color: #202020;
+    overflow-y: auto;
+    max-height: 98vh!important;
+}
+.descr-card p {
+    font-size: 15px;
+}
+
+.descr-card textarea {
+    border-radius: 25px;
+}
+
+.descr-card ul {
+    border-radius: 25px!important;
+}
+
+.links {
+    font-size: 20px;
+    cursor: pointer;
+    
+    background: orange;
+    color: orange !important;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 0 25px 25px 25px !important;
+    position: fixed;
+    z-index: 11001;
+    top: 20px;
+    left: -180px;
+    border-right: solid 5px white;
+    transition: 0.5s;
+}
+
+.links:hover {
+    top: 20px;
+    left: 20px;
+}
+
+.links a {
+    color: white;
+}
+
+.links ul {
+    border-radius: 25px;
+    margin-right: 10px!important;
+}
+
+#goto-activity-app:hover {
+    background: transparent!important;
+    border: 0!important;
+}
+#goto-activity-store:hover {
+    background: transparent!important;
+    border: 0!important;
+}
+#goto-activity-social:hover {
+    background: transparent!important;
+    border: 0!important;
+}
+#goto-activity-market:hover {
+    background: transparent!important;
+    border: 0!important;
+}

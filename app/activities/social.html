@@ -1,0 +1,965 @@
+<?php
+    
+?>
+<!doctype html>
+<html>
+
+<head>
+    <title>Homewire.Social | <?php echo date(Y);?></title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/general-styles.css">
+    <link rel="stylesheet" href="../css/social-specific.css">
+    <script src="https://kit.fontawesome.com/a2763a58b1.js"></script>
+</head>
+
+<body onload="start()">
+    <!--this is the curtain that hides the ui while the page is loading. start() hides/destroys the curtain-->
+    <div class="curtain" id="curtain" hiddenz>
+        <div class="row llg-logo-mesh-div-bg align-items-center" style="height: 100%!important">
+            <div class="col-md-4">
+                <div class="auto-pass mt-4 text-center">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="auto-pass-checkbox">
+                        <label class="custom-control-label" for="auto-pass-checkbox">Auto-Pass? <span class="fas fa-forward"></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center shadow p-4" style="background: #D3C02F; border-radius: 25px">
+                <p class="titles text-left m-0 text-right" style="font-size: 18px">Homewire.app&trade;</p>
+                <hr style="background: white;">
+                <h1 class="titles text-left m-0">.Social</h1>
+                <p class="titles text-left m=0">
+                    <span class="spinner-border spinner-border-sm mb-1" style="height: 6px;width: 6px" role="status" id="curtain-page-load-spinner"><span class="sr-only">Loading...</span></span>
+                    <span id="start-info">Setting things up...</span>
+                </p>
+                <img src="../media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                <p class="p-0 m-0" style="font-size: 4px">Homewire.app&trade; &copy; Adaptiv Media Concept 2021</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <button class="btn btn-light rounded-pill readybtn" style="color: #104210" id="curtain-ready-button"><span class="fas fa-user-friends"></span> Ready <span class="fas fa-arrow-right"></span></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="activities-navigation-sidebar" class="store-sidebar lw-logo-mesh-div-bg">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a style="padding-left: 8px !important;" class="text-decoration-none store-sidebar-text-logo-bg-hover" id="goto-activity-home" data-toggle="pill" href="#activity-app" role="tab" aria-controls="activity-app" aria-selected="true"><img src="../media/general/icons/simple-brand-banner-bgtransp.png" alt="logo" class="img-fluid"></a>
+
+        <hr>
+
+        <a id="goto-activity-app" href="app.html"> <span class="fas fa-chevron-right"></span> .app <span class="fas fa-home"></span></a>
+        <a id="goto-activity-store" href="store.html"> <span class="fas fa-chevron-right"></span> .Store <span class="fas fa-store"></span></a>
+        <a id="goto-activity-blog" href="blog.html"> <span class="fas fa-chevron-right"></span> .Blog <span class="fas fa-blog"></span></a>
+        <a id="goto-activity-market" href="admarket.html"> <span class="fas fa-chevron-right"></span> .AdMarket <span class="fas fa-ad"></span></a>
+    </div>
+
+    <div class="llg-logo-mesh-div-bg" id="main" style="min-height: 100vh;" onscroll="snap()">
+        <!--icon navigation bar. Displays notifications dropdown-->
+        <div class="notification-dropdown-container p-1 shadow-lg" id="">
+            <div class="btn-group dropleft">
+
+                <button type="button" class="btn rounded-pill dropdown-toggle align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fas fa-bell" style="font-size: 30px"></span>
+                </button>
+                <div class="dropdown-menu notification-headers-container minimal-v-scroll shadow-lg">
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item flex-fill bg-transparent border-0 text-left"><span class="titles" style="font-size: 18px">Notifications</span></li>
+                        <li class="list-group-item flex-fill bg-transparent border-0 text-right"><span class="fas fa-ellipsis-v"></span></li>
+                    </ul>
+                    <div id="notification-function-buttons" style="background: #D3C02F">
+                        <div class="llg-logo-mesh-div-bgz">
+                            <ul class="list-group list-group-horizontal-md bg-transparent fixed-llg-logo-mesh-div-bg align-items-center shadow titles">
+                                <li class="list-group-item flex-fill">Mark all as read</li>
+                                <li class="list-group-item flex-fill">Mark <span class="fas fa-external-link-alt"></span></li>
+                                <li class="list-group-item flex-fill">Clear <span class="fas fa-external-link-alt"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="dropdown-item" href="#">
+                        <div class="row p-0 m-0 align-items-center">
+                            <div class="col-auto p-2 m-0">
+                                <img src="../media/users/user_default/profile_picture/dfault.png" class="img-fluid p-0 m-0 rounded-pill bg-white" style="max-height: 25px;width: ">
+                            </div>
+                            <div class="col-auto px-2 m-0">
+                                Action
+                                <div class="card-text" style="font-size: 10px">
+                                    <p class=" pb-1 m-0 text-break text-wrap" style="width: 180px">
+                                        Lorem ipsum bnbnv nbvbvvn vnvnv mbnbn mbnbmbnm bnmbm bmbmb nmbmb nmbnmbmn.
+                                    </p>
+                                    <p class="p-0 m-0 text-right"><small>- 29 Jan 2021</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="llg-logo-mesh-div-bg">
+            <nav class="navbar fixed-topz shadow" id="sub-custom-nav">
+                <a class="rounded-pill navbar-brand text-white titles px-4 my-4 shadow" style="font-size: 50px; background: #104210" href="#">
+                    <div class="lw-logo-mesh-div-bg ">
+                        <span class="fas fa-user-friends"></span>.Social
+                        <!--<img src="../media/general/icons/icon-logo.png" width="30" height="30" class="ml-2 d-inline-block align-top" alt="">-->
+                    </div>
+                </a>
+                <ul class="nav justify-content-end lw-logo-mesh-div-bg rounded-pill py-2 px-4">
+                    <li class="nav-item">
+                        <a class="text-truncate nav-link active" data-toggle="collapse" href="#toggle-wallet-manager" role="button" aria-expanded="false" aria-controls="toggle-wallet-manager">Wallet <span class="fas fa-wallet"></span> | R0,00</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="text-truncate nav-link" data-toggle="collapse" href="#toggle-wallet-manager" role="button" aria-expanded="false" aria-controls="toggle-wallet-manager">Coupons <span class="fas fa-ticket-alt"></span> | 0%-off</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="collapse multi-togglez p-4 minimal-v-scroll" id="toggle-wallet-manager" style="max-height: 40vh;overflow-y: auto">
+                <!--Collapsable container for managing wallet value and discount coupons-->
+                <div class="row">
+                    <div class="col-md-4 mb-4 lw-logo-mesh-div-bg">
+                        <h4 class="titles"><span class="fas fa-wallet"></span> Wallet Value</h4>
+                        <p style="font-size: 50px">R0,00</p>
+                        <button class="btn store-product-card-buttons rounded-pill">Fill up your wallet</button>
+                    </div>
+                    <div class="col-md-4 lw-logo-mesh-div-bg">
+
+                        <h4 class="titles"><span class="fas fa-ticket-alt"></span> Discount Coupons</h4>
+                        <p>You have 0%-off worth of Discount Coupons.</p>
+                        <p>Remember, you earn your coupons by contributing
+                            to the Homewire.Social community by posting your
+                            updates, reading and Liking posts, giving users
+                            a Shout-Out, following other users and making friends.<br>
+                            All of this fills up the Community Rewards Bar as well from which you
+                            will be greatly rewarded.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-block store-product-card-buttons rounded-pill my-4" style="font-size: 30px"><span class="fas fa-cash-register"></span> Checkout</button>
+                        <h4 class="titles"><span class="fas fa-shopping-bag"></span> Shopping Bag and Checkout</h4>
+                        <div class="row mt-4">
+                            <div class="col text-center">
+                                Order Total:
+                                <p style="font-size: 50px" id="">R0,00</p>
+                            </div>
+                            <div class="col text-center">
+                                Items in bag:
+                                <p style="font-size: 50px">0</p>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush my-2 bg-transparent" id="chechout-items-list">
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Cras justo odio</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Dapibus ac facilisis in</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Morbi leo risus</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Porta ac consectetur ac</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Vestibulum at eros</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Cras justo odio</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Dapibus ac facilisis in</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Morbi leo risus</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Porta ac consectetur ac</li>
+                            <li class="list-group-item bg-transparent border-white"><span class="fas fa-times p-2" onclick=""></span> | R0,00 X 1 - Vestibulum at eros</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="store-custom-navbar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <button class="btn store-openbtn" onclick="openNav()" type="button">
+                                <span class="fas fa-bars" style="font-size: 40px"></span>
+                            </button>
+                        </div>
+                        <div class="col-4 text-center">
+                            <!--<a class="title-logo justify-content-start" href="#">Homewire.app</a>-->
+                            <img src="../media/general/icons/icon-logo.png" class="img-fluid my-4 shadow" style="border-radius: 25px; max-height: 200px;background: #104210" alt="logo">
+                        </div>
+                        <div class="col-4 text-right text-white">
+                            <button class="btn rounded-pill border-3 border-white py-2 px-3" style="max-width: 270px; color: #104210" data-toggle="collapse" href="#toggle-wallet-manager" role="button" aria-expanded="false" aria-controls="toggle-wallet-manager">
+                                <span class="fas fa-shopping-bag" style="font-size: 3vw"></span><span class="pl-1" style="font-size: 3vw"> | 0</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.navbar-->
+
+        <div class="container-fluid mt-4">
+            <div class="row align-items-start bg-transparent">
+                <div class="col-md-4 pb-4 pt-0">
+                    <button onclick="iconChange()" style="border-bottom-left-radius: 0!important; color: #104210!important" class="btn btn-warning btn-blockz rounded-pill text-white titles p-4" type="button" data-toggle="collapse" data-target=".multi-toggle" aria-expanded="false" aria-controls="toggle-wallet-managerz membership social-media-list community-rewards-descr community-reward-goals social-update-post topics-list friends-list social-profile-card-following-stat">
+                        <span id="expand-compress-iconChange">
+                            <span class="fas fa-expand"></span>
+                        </span>
+                    </button>
+                    <div class="my-2 p-4 social-ui-segments sus-gradient shadow" style="border-top-left-radius: 0; color: #104210;">
+                        <div class="lw-logo-mesh-div-bg">
+
+                            <img src="../media/users/user_default/profile_picture/me.jpg" class="img-fluid rounded-circle shadow" alt="profile picture" style=" border: solid 5px #fff">
+                            <div style="">
+                                <button class="btn btn-warning text-white p-4 rounded-circle shadow-lg" style="border-top-right-radius: 0!important; margin-top: -100px; margin-right: -100px; color: #104210!important"><span class="fas fa-exchange-alt"></span> </button>
+                            </div>
+
+                            <h5 class="titles fw-bold mt-3 sticky-top text-center" style="5vw !important;z-index: 0!important" data-toggle="collapse" href="#social-profile-card-following-stat" role="button" aria-expanded="false" aria-controls="social-profile-card-following-stat"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h5>
+                            <hr>
+                            <div id="social-profile-card-following-stat" class="collapse multi-toggle">
+                                <div class="text-center w-100" style="font-size: 20px">
+                                    <span class="fas fa-walking wind"></span>
+                                </div>
+                                <ul class="list-group list-group-horizontal-lg bg-transparent border-0 text-center">
+                                    <li class="m-0 p-0 list-group-item flex-fill bg-transparent border-0">
+                                        <h5><span class="">0</span><br> Followers</h5>
+                                    </li>
+                                    <li class="m-0 p-0 list-group-item flex-fill bg-transparent border-0">
+                                        <h5><span class="">0</span><br> Following</h5>
+                                    </li>
+                                </ul>
+                                <hr>
+                            </div>
+
+                            <h4 class="titles text-center">Become a Member <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h4>
+                            <div class="collapse multi-toggle" id="membership">
+                                <p class="text-center" id="member-invitation-msg"><span class="titles">Not a Member yet?</span> Become one today for exclusive benefits. You can <span class="titles">Cancel anytime</span> with no strings attached. To get started, tap the Manage Membership button <span class="fas fa-arrow-circle-down"></span>.</p>
+                                <button class="btn btn-block store-openbtn my-1 shadow" data-toggle="collapse" href="#footer-collapse" role="button" aria-expanded="false" aria-controls="footer-collapse">
+                                    Manage Membership
+                                </button>
+
+                                <button class="btn btn-block store-openbtn my-1 shadow" data-toggle="collapse" href="#footer-collapse" role="button" aria-expanded="false" aria-controls="footer-collapse">
+                                    Manage Subscriptions
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="my-2 p-4 social-ui-segments sus-gradient shadow" style=" color: #104210;">
+                        <div id="social-user-buttons">
+                            <div id="page-viewer-user-buttons text-center" hidden>
+                                <button class="btn btn-block shadow rounded-pill p-4 mx-1 my-2 social-card-transparent-buttons"><span class="fas fa-user-plus" style="font-size: 20px"></span> Request</button>
+                                <button class="btn btn-block shadow rounded-pill p-4 mx-1 my-2 social-card-transparent-buttons"><span class="fas fa-plus" style="font-size: 20px"></span> Follow</button>
+                                <hr>
+                            </div>
+
+                            <div id="page-owner-user-buttons" class="minimal-v-scroll px-2" style="max-height: 200px; overflow-y: auto;overflow-x: hidden;z-index: 0!important">
+                                <p style="font-size: 6px;" class="mb-0 text-right"><span class="fas fa-caret-up"></span><br> <i>Scroll</i><br> <span class="fas fa-caret-down"></span></p>
+                                <button class="btn btn-block my-2 shadow rounded-pill p-4 mx-1 my-0 social-card-transparent-buttons"><span class="fas fa-users" style="font-size: 20px"></span> Friends</button>
+                                <button class="btn btn-block my-2 shadow rounded-pill p-4 mx-1 my-2 social-card-transparent-buttons"><span class="fas fa-walking wind" style="font-size: 20px"></span> Followers</button>
+                                <button class="btn btn-block my-2 shadow rounded-pill p-4 mx-1 my-2 social-card-transparent-buttons"><span class="fas fa-comments" style="font-size: 20px"></span> Chat</button>
+                                <button class="btn btn-block my-2 shadow rounded-pill p-4 mx-1 my-2 social-card-transparent-buttons"><span class="fas fa-user-cog" style="font-size: 20px"></span> Settings</button>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <p id="bio">
+                            About Me
+                            <br>
+                            This is the Bio/Description of the user. They can
+                            expres themselves in brief.
+                        </p>
+                        <hr>
+                        <p id="bio" data-toggle="collapse" href="#social-media-list" role="button" aria-expanded="false" aria-controls="social-media-list">
+                            Media <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span>
+                        </p>
+                        <div id="social-media-list" class="v-scrolling-wrapper collapse multi-toggle" style="max-height: 250px; overflow-y: auto">
+                            <div class="card-columns mr-4">
+                                <div class="card bg-transparent">
+                                    <img src="../media/users/user_default/library/kbae.jpg" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                                <div class="card bg-transparent">
+                                    <img src="../media/users/user_default/library/me.jpg" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                                <div class="card bg-transparent">
+                                    <img src="../media/users/user_default/library/WIN_20200127_14_16_58_Pro.jpg" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                                <div class="card bg-transparent">
+                                    <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                                <div class="card bg-transparent">
+                                    <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-09-16%20adt%2012.45.png" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                                <div class="card bg-transparent">
+                                    <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-09-16%20at%2012.45%200.png" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                                <div class="card bg-transparent">
+                                    <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-d09-16%20at%2012.png" class="card-img-top" alt="..." style="border-radius: 25px">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="my-2 p-2 social-ui-segments sus-gradient shadow" style="border-bottom-left-radius: 0; color: #104210 !important;">
+                        <div class="lw-logo-mesh-div-bg mx-2 my-4">
+                            <h5 class="titles"><span class="fas fa-ad"></span>.AdMarket | Featured</h5>
+                            <hr>
+
+                            <div class="mr-2" id="admarket-featured-posts">
+                                <div class="card p-2 admarket-cards border-top border-bottomz shadow-lg">
+                                    <ul class="list-group list-group-horizontal-sm align-items-center mb-2">
+                                        <li class="p-0 m-0 list-group-item bg-transparent border-0 pl-2 flex-fill">
+                                            <img src="../media/users/user_default/profile_picture/dfault.png" alt="post title" class="img-fluid bg-white rounded-pill shadow rounded-3 mb-1" style="height: 20px;width: 20px">
+                                            <h5 class="card-title">Suzan Jolena</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Seller <br><span class="fas fa-map-marked-alt"></span> <span style="font-size: 10px" id="admarket-post-user-address">Address here</span></h6>
+                                        </li>
+                                        <li class="p-0 m-0 list-group-item bg-transparent border-0 text-center pr-4" id="admarket-post-image">
+                                            <img src="../media/users/user_default/library/admarket/kbae.jpg" alt="post title" class="shadow-lg">
+                                        </li>
+                                    </ul>
+
+                                    <div class="card-body shadow m-0 p-0 pl-4 border-left fixed-lw-logo-mesh-div-bg" style="height:5rem; overflow-y: auto">
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                    <div class="card-body fixed-lw-logo-mesh-div-bg">
+                                        <a href="#" class="card-link rounded-pill p-2 shadow admarket-send-author-msg-button">Send me a message</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 py-4 profile-banner-img-bg-only shadow-lg" style="border-radius: 25px 0 0 25px">
+                    <!--Full width Banner image-->
+                    <div class="profile-banner shadow-lg" id="profile-banner" style="border-radius: 25px 0 25px 25px; border: solid 5px #fff">
+                        <button class="btn btn-warning text-white p-4 shadow-lg" style="border-radius: 25px 25px 0 25px; margin-top: -10px; margin-left: -10px;  color: #104210!important"><span class="fas fa-exchange-alt"></span> </button>
+                    </div>
+
+                    <div class="my-2 p-2 social-ui-segments -white shadow" style="border-bottom-left-radius: 0; color: #104210;">
+                        <div class="llg-logo-mesh-div-bgz mx-2 my-4">
+                            <h3 class="titles">Stories</h3>
+                            <hr class="bg-white">
+                            <div class="h-scrolling-wrapper fixed-llg-logo-mesh-div-bg" id="top-selling-supplies-list">
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/me.jpg" alt="placeholder" class="img-fluid rounded-circle bg-white shadow-lg" style="height: 100px; width: 100px;">
+                                    <button class="btn bgn-white rounded-pill"><span class="fas fa-plus"></span> </button>
+                                </div>
+                                <!--This card is exclusively for Homewire.Social-->
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/general/icons/icon-logo.png" class="img-fluid shadow" style="border-radius: 25px; max-height: 200px;background: #D3C02F" alt="logo">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px">
+                                    <img src="../media/users/user_default/profile_picture/dfault.png" alt="placeholder" class="img-fluid rounded-circle bg-white" style="height: 100px; width: 100px;">
+                                </div>
+                                <div class="h-scroll-card mx-2 mb-2 p-2 shadow-lg" style="background: #fff !important; border-radius: 25px" id="-stories-return-to-top">
+                                    <button class="btn social-card-transparent-buttons p-4 shadow" style="border-radius: 25px">
+                                        <span class="fas fa-chevron-left"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-2 p-4 social-ui-segments-white shadow" style="border-top-left-radius: 0; color: #104210; paddingz: 0;" id="community-reward-progress-bar">
+                        <div class="llg-logo-mesh-div-bgz">
+                            <div class="mb-4 shadow" style="background: #D3C02F; border-radius: 25px; color: black">
+                                <div class="p-2 fixed-llg-logo-mesh-div-bg">
+                                    <div class="border-left ml-2 pl-2" style="border-top-left-radius: 25px">
+                                        <img src="../media/general/icons/simple-brand-banner-bgtransp.png" class="img-fluid" style="max-width: 200px">
+                                        <h3 class="titles" data-toggle="collapse" href="#community-rewards-descr" role="button" aria-expanded="false" aria-controls="community-rewards-descr"><span class="fas fa-gift"></span> Community Rewards <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h3>
+                                        <p id="community-rewards-descr" class="collapse multi-toggle">
+                                            Hi <span id="display-users-name">Thabang</span>. This is the Community Rewards Progress Bar. <br>
+                                            Every time you do something important on the Homewire.Social Community, the progress fills up
+                                            and when it does, everyone in the Community will receive this reward. The Community Rewards Value
+                                            gets better better the more levels we get to.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mb-4" style="background: #D3C02F; border-radius: 25px; color: black">
+                                <div class="p-4 fixed-llg-logo-mesh-div-bg shadow">
+                                    <!--<img src="../media/general/icons/simple-brand-banner-bgtransp.png" class="img-fluid" style="max-width: 200px">-->
+                                    <div class="row align-items-center">
+                                        <div class="col-10 mr-0 pr-0">
+                                            <h3 class="titles">Reward Goals</h3>
+                                        </div>
+                                        <div class="col-2 text-right">
+                                            <span class="badge badge-light rounded-pill p-2 shadow-lg" style="font-size: 10px" data-toggle="collapse" href="#community-reward-goals" role="button" aria-expanded="false" aria-controls="community-reward-goals"><span class="fas fa-eye"></span> Details</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="collapse multi-toggle mb-2" id="community-reward-goals" style="font-size: 12px">
+                                        <li class="border-right border-white"><span class="titles" style="font-size: 16px"><span class="fas fa-store"></span> __ &#40;<span id="Items-Count" class="titles">0</span>/300&#41;</span> Items Purchased from the <span class="titles" style="font-size: 16px">.Store</span></li>
+                                        <li class="border-right border-white"><span class="titles" style="font-size: 16px"><span class="fas fa-ad"></span> __ &#40;<span id="Community-Ads-Count">0</span>/10&#41; </span>Community Ads posted in the <span class="titles" style="font-size: 16px">.AdMarket</span></li>
+                                        <li class="border-right border-white"><span class="titles" style="font-size: 16px"><span class="fas fa-user-friends"></span> __ &#40;<span id="Community_Updates-Count">0</span>/20&#41; </span>Community Updates/Posts on <span class="titles" style="font-size: 16px">.Social</span></li>
+                                        <li class="border-right border-white"><span class="titles" style="font-size: 16px"><span class="fas fa-user-friends"></span> __ &#40;<span id="Shoutouts-Count">0</span>/20&#41; </span>Shout-Outs on <span class="titles" style="font-size: 16px">.Social</span></li>
+                                        <li class="border-right border-white"><span class="titles" style="font-size: 16px"><span class="fas fa-user-friends"></span> __ &#40;<span id="Likes-Count">0</span>/20&#41; </span>Post Likes on <span class="titles" style="font-size: 16px">.Social</span></li>
+                                        <!--<li class="border-right border-white" style="border-bottom-right-radius: 50rem;"><span class="titles" style="font-size: 16px"><span class="fas fa-blog"></span> __ &#40;<span id="Comments-Count">0</span>/5&#41; </span>Comments posted on <span class="titles" style="font-size: 16px">.Blog</span></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end mt-4">
+                                <div class="col text-left">
+                                    <h3 class="titles">Reward Lv.: 1</h3>
+                                    <hr>
+                                    <span style="margin-left: 40px"><span class="fas fa-caret-left"></span> <span class="fas fa-ticket-alt"></span> 1%-off</span>
+                                </div>
+                                <div class="col text-right">
+                                    <h3 class="titles">Previous Reward: <span class="fas fa-ticket-alt"></span> 10%-off</h3>
+                                    <hr>
+                                    <span style="margin-right: 40px"><span class="fas fa-gift"></span> Reward <span class="fas fa-caret-right"></span></span>
+                                </div>
+                            </div>
+                            <style>
+                                #bars-Community-Ads-Count {
+                                    background: rebeccapurple !important;
+
+                                }
+
+                                #bars-Community_Updates-Count {
+                                    background: #D3C02F !important;
+                                }
+
+                                #bars-Shoutouts-Count {
+                                    background: #D3C02F !important;
+                                }
+
+                                #bars-Likes-Count {
+                                    background: #D3C02F #104210 !important;
+                                }
+
+                                #bars-Comments-Count {
+                                    background: orange !important;
+                                }
+
+                                #bars-Items-Count {
+                                    background: #E43D40 !important;
+                                }
+                            </style>
+                            <div class="progress rounded-pill shadow" style="height: 100px">
+
+                                <!--These bars are the original envisioned bars. I am excluding .blog related goals up until I am able to get the blog down
+                                <div id="bars-Items-Count" class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-store mb-3"></span> &#40;0/300&#41;</div>
+                                <div id="bars-Community-Ads-Count" class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-ad mb-3"></span> &#40;0/10&#41;</div>
+                                <div id="bars-Community_Updates-Count" class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-user-friends mb-3"></span> &#40;0/20&#41;</div>
+                                <div id="bars-Shoutouts-Count" class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-user-friends mb-3"></span> &#40;0/20&#41;</div>
+                                <div id="bars-Likes-Count" class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-user-friends mb-2"></span> <span class="fas fa-blog mb-3"></span> &#40;0/20&#41;</div>
+                                <div id="bars-Comments-Count" class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-blog mb-3"></span> &#40;0/5&#41;</div>-->
+
+                                <div id="bars-Items-Count" class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-store mb-3"></span> &#40;0/300&#41;</div>
+                                <div id="bars-Community-Ads-Count" class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-ad mb-3"></span> &#40;0/10&#41;</div>
+                                <div id="bars-Community_Updates-Count" class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-user-friends mb-3"></span> &#40;0/20&#41;</div>
+                                <div id="bars-Shoutouts-Count" class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-user-friends mb-3"></span> &#40;0/20&#41;</div>
+                                <div id="bars-Likes-Count" class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span class="fas fa-user-friends mb-3"></span> &#40;0/20&#41;</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-2 p-4 social-ui-segments -white shadow" style="border-bottom-right-radius: 0; color: #104210;">
+                        <div class="llg-logo-mesh-div-bgz">
+                            <h5 class="titles" data-toggle="collapse" href="#social-update-post" role="button" aria-expanded="false" aria-controls="social-update-post">Post an Update <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h5>
+                            <form class="bg-whiteZ" style="border-radius: 25px;">
+                                <div class="collapse multi-toggle form-group llg-logo-mesh-div-bgz" id="social-update-post">
+                                    <!--<label for="exampleFormControlTextarea1" class="mt-4 ml-4">Tell the community how you are doing today..</label>-->
+                                    <div class="m-0 p-0 bg-white shadow-lg" style="border-radius: 25px 25px 25px 0; color: black">
+                                        <textarea class="form-control border-0 px-4 fixed-llg-logo-mesh-div-bg" id="social-update-msg-input-text" rows="3" placeholder="Tell the community how you are doing today" style="border-left: solid 4px #104210 !important;border-top-left-radius: 25px"></textarea>
+                                    </div>
+
+                                    <ul class="list-group list-group-horizontal-lg social-functions-buttons-container rounded-pillz text-center">
+                                        <li class="list-group-item flex-fillz border-0 bg-transparentz social-functions-buttons bg-white p-0z" style="border-bottom-left-radius: 25px">
+                                            <span class="fas fa-paper-plane"></span>
+                                        </li>
+                                        <li class="list-group-item flex-fillz border-0 bg-transparentz social-functions-buttons bg-white p-0">
+                                            <div class="fixed-llg-logo-mesh-div-bgz my-2">
+                                                <span class="fas fa-images m-2"></span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item flex-fillz border-0 bg-transparentz social-functions-buttons bg-white p-0">
+                                            <div class="fixed-llg-logo-mesh-div-bgz my-2">
+                                                <span class="fas fa-video m-2"></span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item flex-fillz border-0 bg-transparentz social-functions-buttons bg-white p-0">
+                                            <div class="fixed-llg-logo-mesh-div-bgz my-2">
+                                                <span class="fas fa-map-marked-alt m-2"></span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item flex-fillz border-0 bg-transparentz social-functions-buttons bg-white p-0" style="border-bottom-right-radius: 25px">
+                                            <div class="fixed-llg-logo-mesh-div-bgz my-2">
+                                                <span class="fas fa-user-tag m-2"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid mb-2 pt-2" id="start">
+            <div class="row">
+                <div class="col-md-8 px-1">
+                    <div class="lw-logo-mesh-div-bg py-2 px-3 m-2 social-ui-segments sus-gradientz shadow" style="color: #104210; border-top-left-radius: 0;">
+                        <h3 class="titles fw-bolder border-topz border-white pt-2 mt-4" style="color: #104210;" data-toggle="collapse" href="#topics-list" role="button" aria-expanded="false" aria-controls="topics-list"><span class="fas fa-clipboard-list"></span> Topics <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h3>
+                        <hr class="bg-white">
+                        <div class="social-topics-list v-scrolling-wrapper collapse multi-toggle" id="topics-list">
+                            <h5 class="pl-1"><span class="fas fa-thumbtack" style=""></span> Pinned</h5>
+                            <ul class="list-group list-group-flush" id="social-topics-list-pinned">
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;"><span class="fas fa-thumbtack" style=""></span><br> Cleaning Tips &amp; Tricks</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;"><span class="fas fa-thumbtack" style=""></span><br> Sanitation</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;"><span class="fas fa-thumbtack" style=""></span><br> Community Health and Safety</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;"><span class="fas fa-thumbtack" style=""></span><br> How has .AdMarket helped you?</li>
+                            </ul>
+
+                            <h5 class="mt-4"><span class="fas fa-globe" style=""></span> General</h5>
+                            <ul class="list-group list-group-flush" id="social-topics-list-general">
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Cleaning Tips &amp; Tricks</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Sanitation</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Community Health and Safety</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">How has .AdMarket helped you?</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Cleaning Tips &amp; Tricks</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Sanitation</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Community Health and Safety</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">How has .AdMarket helped you?</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Cleaning Tips &amp; Tricks</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Sanitation</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Community Health and Safety</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">How has .AdMarket helped you?</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Cleaning Tips &amp; Tricks</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Sanitation</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">Community Health and Safety</li>
+                                <li class="list-group-item bg-transparent rounded-pill border-bottom border-white" style="border-bottom-left-radius: 0 !important;">How has .AdMarket helped you?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-4 m-0">
+                            <div class="lw-logo-mesh-div-bg py-2 px-4 my-4 mx-2 social-ui-segments sus-gradientz shadow" style="color: #104210;">
+                                <h3 class="titles fw-bolder border-topz border-white pt-2 mt-4" style="color: #104210;" data-toggle="collapse" href="#friends-list" role="button" aria-expanded="false" aria-controls="friends-list"><span class="fas fa-users"></span> Friends <span class="fas fa-hand-pointer tap-indicator" style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h3>
+                                <hr class="bg-white">
+                                <ul class="list-group list-group-flush text-center collapse multi-toggle v-scrolling-wrapper" id="friends-list" style="max-height: 600px;overflow-y: auto">
+                                    <li class="list-group-item bg-transparent rounded-pill" style="font-size: 20px; border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="max-height:100px;"> <br> Thabo Mbokazi</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="font-size: 20px; border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="max-height:100px;"> <br> Zelda Sterken</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="font-size: 20px; border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="max-height:100px;"> <br> Thato Tholi</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="font-size: 20px; border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="max-height:100px;"> <br> Kholofelo Labelo</li>
+                                    <li class="list-group-item bg-transparent rounded-pill" style="font-size: 20px; border-bottom-left-radius: 0 !important;"><img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="max-height:100px;"> <br> Zenzo Ndambi</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 m-0 pt-0">
+                            <div class="lw-logo-mesh-div-bg py-2 px-4 my-4 mx-2 social-ui-segments sus-gradientz shadow" style="color: #104210;">
+                                <h3 class="titles mt-4 mx-3 pt-2 border-topz border-white"><span class="fas fa-stream mr-2"></span>Community Feed</h3>
+                                <hr class="bg-white">
+                                <div class="" id="myupdates-list">
+                                    <div class="card profile-updates-card shadow mx-2 my-4" id="updt_timecode_usrid-">
+                                        <div class="fixed-llg-logo-mesh-div-bg">
+                                            <!--Start of Update Post-->
+                                            <div class="card-body bg-white shadow-lg rounded-3" style="border-top-right-radius: 25px">
+                                                <div class="row align-items-center llg-logo-mesh-div-bg">
+                                                    <div class="col-4">
+                                                        <img src="../media/users/user_default/profile_picture/dfault.png" class="m-2 img-fluid rounded-circle bg-white shadow" alt="profile picture">
+                                                    </div>
+                                                    <div class="col-8 text-right">
+                                                        <a class="card-link titles fw-bold" style="font-size: 30px;"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</a>
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-right mb-0" style="margin-top: -10px"><span class="p-2 bg-white rounded-pill" style="">26 Feb 2021</span></p>
+
+                                                <p class="card-text p-2" style="border-radius: 25px">
+                                                    <span class="titles">@IARxII_Official</span> said:<br>
+                                                    Loremp ipsumjhgjvjghvhvgchsjvhjcghxjcvbxjhbvc
+                                                    cchjbjhbvcjbvcbjcbvmc
+                                                    mbvcjbvncbbvmcbvmcbvcnbvcnmbvc
+                                                    mbvmcbvcnmbvncbvbc
+                                                    vbncbmmvbc
+                                                </p>
+                                                <div id="post-tags-">
+                                                    <span class="titles">Tags:</span>
+                                                    None
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="myupdate-media-att text-center" id="myupdate-media-att" hidden>
+                                                    <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" alt="" class="img-fluid" style="">
+                                                </div>
+                                                <div class="profile-update-card-commands minimal-h-scroll shadow px-4" id="">
+                                                    <ul class="list-group list-group-horizontal-sm bg-transparent border-0 fixed-llg-logo-mesh-div-bgz align-items-center">
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-comment"></span><span id=""> 3</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-heart"></span><span id=""> 105</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bullhorn"></span><span id=""> 5</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white px-2"><span class="fas fa-bookmark"></span> Keep</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card profile-updates-card shadow mx-2 my-4" id="updt_timecode_usrid-">
+                                        <div class="fixed-llg-logo-mesh-div-bg">
+                                            <!--Start of Update Post-->
+                                            <div class="card-body bg-white shadow-lg rounded-3" style="border-top-right-radius: 25px">
+                                                <div class="row align-items-center llg-logo-mesh-div-bg">
+                                                    <div class="col-4">
+                                                        <img src="../media/users/user_default/profile_picture/dfault.png" class="m-2 img-fluid rounded-circle bg-white shadow" alt="profile picture">
+                                                    </div>
+                                                    <div class="col-8 text-right">
+                                                        <a class="card-link titles fw-bold" style="font-size: 30px;"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</a>
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-right mb-0" style="margin-top: -10px"><span class="p-2 bg-white rounded-pill" style="">26 Feb 2021</span></p>
+
+                                                <p class="card-text p-2" style="border-radius: 25px">
+                                                    <span class="titles">@IARxII_Official</span> said:<br>
+                                                    Loremp ipsumjhgjvjghvhvgchsjvhjcghxjcvbxjhbvc
+                                                    cchjbjhbvcjbvcbjcbvmc
+                                                    mbvcjbvncbbvmcbvmcbvcnbvcnmbvc
+                                                    mbvmcbvcnmbvncbvbc
+                                                    vbncbmmvbc
+                                                </p>
+                                                <div id="post-tags-">
+                                                    <span class="titles">Tags:</span>
+                                                    None
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="myupdate-media-att text-center" id="myupdate-media-att" hidden>
+                                                    <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" alt="" class="img-fluid" style="">
+                                                </div>
+                                                <div class="profile-update-card-commands minimal-h-scroll shadow px-4" id="">
+                                                    <ul class="list-group list-group-horizontal-sm bg-transparent border-0 fixed-llg-logo-mesh-div-bgz align-items-center">
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-comment"></span><span id=""> 3</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-heart"></span><span id=""> 105</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bullhorn"></span><span id=""> 5</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white px-2"><span class="fas fa-bookmark"></span> Keep</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card profile-updates-card shadow mx-2 my-4" id="updt_timecode_usrid-">
+                                        <div class="fixed-llg-logo-mesh-div-bg">
+                                            <!--Start of Update Post-->
+                                            <div class="card-body bg-white shadow-lg rounded-3" style="border-top-right-radius: 25px">
+                                                <div class="row align-items-center llg-logo-mesh-div-bg">
+                                                    <div class="col-4">
+                                                        <img src="../media/users/user_default/profile_picture/dfault.png" class="m-2 img-fluid rounded-circle bg-white shadow" alt="profile picture">
+                                                    </div>
+                                                    <div class="col-8 text-right">
+                                                        <a class="card-link titles fw-bold" style="font-size: 30px;"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</a>
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-right mb-0" style="margin-top: -10px"><span class="p-2 bg-white rounded-pill" style="">26 Feb 2021</span></p>
+
+                                                <p class="card-text p-2" style="border-radius: 25px">
+                                                    <span class="titles">@IARxII_Official</span> said:<br>
+                                                    Loremp ipsumjhgjvjghvhvgchsjvhjcghxjcvbxjhbvc
+                                                    cchjbjhbvcjbvcbjcbvmc
+                                                    mbvcjbvncbbvmcbvmcbvcnbvcnmbvc
+                                                    mbvmcbvcnmbvncbvbc
+                                                    vbncbmmvbc
+                                                </p>
+                                                <div id="post-tags-">
+                                                    <span class="titles">Tags:</span>
+                                                    None
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="myupdate-media-att text-center" id="myupdate-media-att" hidden>
+                                                    <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" alt="" class="img-fluid" style="">
+                                                </div>
+                                                <div class="profile-update-card-commands minimal-h-scroll shadow px-4" id="">
+                                                    <ul class="list-group list-group-horizontal-sm bg-transparent border-0 fixed-llg-logo-mesh-div-bgz align-items-center">
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-comment"></span><span id=""> 3</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-heart"></span><span id=""> 105</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bullhorn"></span><span id=""> 5</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white px-2"><span class="fas fa-bookmark"></span> Keep</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card profile-updates-card shadow mx-2 my-4" id="updt_timecode_usrid-">
+                                        <div class="fixed-llg-logo-mesh-div-bg">
+                                            <!--Start of Update Post-->
+                                            <div class="card-body bg-white shadow-lg rounded-3" style="border-top-right-radius: 25px">
+                                                <div class="row align-items-center llg-logo-mesh-div-bg">
+                                                    <div class="col-4">
+                                                        <img src="../media/users/user_default/profile_picture/dfault.png" class="m-2 img-fluid rounded-circle bg-white shadow" alt="profile picture">
+                                                    </div>
+                                                    <div class="col-8 text-right">
+                                                        <a class="card-link titles fw-bold" style="font-size: 30px;"><span class="fas fa-check-circle" style="color: goldenrod"></span> Thabang Mposula</a>
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-right mb-0" style="margin-top: -10px"><span class="p-2 bg-white rounded-pill" style="">26 Feb 2021</span></p>
+
+                                                <p class="card-text p-2" style="border-radius: 25px">
+                                                    <span class="titles">@IARxII_Official</span> said:<br>
+                                                    Loremp ipsumjhgjvjghvhvgchsjvhjcghxjcvbxjhbvc
+                                                    cchjbjhbvcjbvcbjcbvmc
+                                                    mbvcjbvncbbvmcbvmcbvcnbvcnmbvc
+                                                    mbvmcbvcnmbvncbvbc
+                                                    vbncbmmvbc
+                                                </p>
+                                                <div id="post-tags-">
+                                                    <span class="titles">Tags:</span>
+                                                    None
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="myupdate-media-att text-center" id="myupdate-media-att" hidden>
+                                                    <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" alt="" class="img-fluid" style="">
+                                                </div>
+                                                <div class="profile-update-card-commands minimal-h-scroll shadow px-4" id="">
+                                                    <ul class="list-group list-group-horizontal-sm bg-transparent border-0 fixed-llg-logo-mesh-div-bgz align-items-center">
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-comment"></span><span id=""> 3</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-heart"></span><span id=""> 105</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white"><span class="fas fa-bullhorn"></span><span id=""> 5</span></button></li>
+
+                                                        <li class="list-group-item flex-fill text-center bg-transparent border-0"><button class="btn shadow p-2 rounded-pill text-white px-2"><span class="fas fa-bookmark"></span> Keep</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--End of Update Post-->
+
+                                    <div class="text-center">
+                                        <hr>
+                                        <img src="../media/general/icons/icon-logo.png" style="height: 50px; width: 50px" alt="end of updates">
+                                    </div>
+                                    <!--
+                                        End of Updates/Update Posts
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .stick-to-top {
+                        position: sticky !important;
+                        top: 0 !important;
+                    }
+                </style>
+
+                <div class="col-md-4 px-1">
+                    <section id="topics-and-friends-section" class="lw-logo-mesh-div-bg py-4 px-3 m-2 social-ui-segments sus-gradientz shadow stick-to-top" style="border-top-right-radius: 0; color: #104210">
+
+                        <div id="homewwire-advertisements" class="bg-white shadow">
+                            <div id="carouselExampleSlidesOnly" class="carousel slide fixed-llg-logo-mesh-div-bg" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active text-center">
+                                        <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-09-16%20adt%2012.45.png" class="d-block w-100" alt="..." stylez="max-height: 200px; width: auto !important">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <div class="fixed-lw-logo-mesh-div-bg">
+                                                <h5 class="mx-3" data-toggle="collapse" href="#homwire-advertisements-captions" role="button" aria-expanded="false" aria-controls="homwire-advertisements-captions">
+                                                    <span class="fas fa-info-circle"></span> info
+                                                </h5>
+                                                <!--external-link-square-alt-->
+                                                <p class="mb-0 collapse" id="homwire-advertisements-captions">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../media/general/images/products/supplies/units/WhatsApp%20Image%202020-09-16%20at%2012.45.png" class="d-block w-100" alt="..." stylze="max-height: 200px; width: auto !important">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <div class="fixed-lw-logo-mesh-div-bg">
+                                                <h5 class="mx-3" data-toggle="collapse" href="#homwire-advertisements-captions" role="button" aria-expanded="false" aria-controls="homwire-advertisements-captions">
+                                                    <span class="fas fa-info-circle"></span> info
+                                                </h5>
+                                                <!--external-link-square-alt-->
+                                                <p class="mb-0 collapse" id="homwire-advertisements-captions">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../media/general/images/products/supplies/kits/WhatsApp%20Image%202020-d09-16%20at%2012.png" class="d-block w-100" alt="..." stylez="max-height: 200px; width: auto !important">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <div class="fixed-lw-logo-mesh-div-bg">
+                                                <h5 class="mx-3" data-toggle="collapse" href="#homwire-advertisements-captions" role="button" aria-expanded="false" aria-controls="homwire-advertisements-captions">
+                                                    <span class="fas fa-info-circle"></span> info
+                                                </h5>
+                                                <!--external-link-square-alt-->
+                                                <p class="mb-0 collapse" id="homwire-advertisements-captions">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-muted text-right pt-1" style="font-size: 10px">Powered by <span class="titles" style="color: rebeccapurple !important;">.AdMarket</span></p>
+                    </section>
+                </div>
+            </div>
+            <div class="" style="height: 220px; width: 100%;" id="extra-space-bottom">
+
+            </div>
+        </div>
+
+        <div class="fixed-bottom tab-nav align-items-center shadow" id="footer">
+            <div class="container text-left">
+                <div class="row align-items-center my-2">
+                    <div class="col-4" style="">
+                        <div class="h-scrolling-wrapper minimal-h-scroll" style="border-radius: 25px">
+                            <div class="h-scroll-card mb-2">
+                                <button class="btn store-openbtn my-1 mr-2" onclick="openNav()" type="button">
+                                    <span class="fas fa-bars" style="font-size: 40px"></span>
+                                </button>
+                            </div>
+                            <div class="h-scroll-card mb-2">
+                                <button class="btn store-product-card-buttons rounded-pill p-2 my-1 mr-2 shadow" style="color: rgb(28, 105, 99); font-size: 20px !important">
+                                    <span class="fas fa-arrow-up"></span>
+                                </button>
+                            </div>
+                            <div class="h-scroll-card mb-2">
+                                <a href="" class="text-decoration-none py-2 my-1 text-truncate" id="tab-nav-copyright">Adaptiv Media Concept &copy; 2021</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <img src="../media/general/icons/simple-brand-banner-bgtransp.png" style="height: 50px; background: #D3C02F; border-radius: 15px" alt="end of updates">
+                    </div>
+                    <div class="col-4 text-right">
+                        <div style="color: #104210" data-toggle="collapse" href="#footer-collapse" role="button" aria-expanded="false" aria-controls="footer-collapse">
+                            <span id="hide-text" hidden><span class="fas fa-compress-alt"></span> Expand</span>
+                            <span id="show-text"><span class="fas fa-expand-alt"></span> Expand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="footer-collapse">
+                    <div class="row align-items-center mt-2">
+                        <div class="col text-left">
+                            <ul class="nav justify-content-start mb-4 mt-2">
+                                <li class="nav-item border-right">
+                                    <a class="nav-link focused" id="activity-app-subtab-home" data-toggle="pill" href="#app-subtab-home" role="tab" aria-controls="app-subtab-home" aria-selected="true">
+                                        <span class="fas fa-ellipsis-v"></span> More
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col text-right">
+                            <button class="btn store-product-card-buttons p-2 my-3" style="font-size: 18px !important;2vw; border-radius: 25px">
+                                <img src="../media/users/user_default/profile_picture/dfault.png" alt="" class="img-fluid rounded-circle bg-white" style="height:50px;">
+                                <span class="fas fa-check-circle" style="color: goldenrod"></span>
+                                | <span class="fas fa-wallet"></span> R0,00 | <span class="fas fa-ticket-alt"></span> 0%-off
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function start() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+            if (vw >= 801) {
+                openNav();
+            }
+
+            window.location.hash = "#start";
+
+            var startInfoOutput = document.getElementById("start-info");
+            var spinner = document.getElementById("curtain-page-load-spinner");
+            var readybtn = document.getElementById("curtain-ready-button");
+            spinner.style.display = "none";
+            startInfoOutput.innerHTML = '- Great. You are good to go.';
+            readybtn.style.marginBottom = "0";
+        }
+
+        function openNav() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+            //alert("Width: " + vw + " | Height: " + vh);
+
+            if (vw <= 800) {
+                document.getElementById("activities-navigation-sidebar").style.width = "250px";
+                document.getElementById("sub-custom-nav").style.marginLeft = "250px";
+                document.getElementById("main").style.marginLeft = "0px";
+                document.getElementById("footer").style.marginBottom = "-90px";
+            } else {
+                document.getElementById("activities-navigation-sidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.getElementById("footer").style.marginBottom = "-90px";
+            }
+
+            document.getElementById("sub-custom-nav").style.borderTopLeftRadius = "25px";
+        }
+
+        function closeNav() {
+            document.getElementById("activities-navigation-sidebar").style.width = "0";
+            document.getElementById("sub-custom-nav").style.marginLeft = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("footer").style.marginBottom = "0px";
+
+            document.getElementById("sub-custom-nav").style.borderTopLeftRadius = "0";
+        }
+
+        document.getElementById("curtain-ready-button").addEventListener("click", function() {
+            //slide the .curtain div out of view to the left
+            document.getElementById("curtain").style.display = "none";
+        });
+        
+        function iconChange() {
+            var btn = document.getElementById('expand-compress-iconChange');
+            var currInnerHtml = btn.innerHTML;
+            if(currInnerHtml=='<span class="fas fa-expand"></span>'){
+               btn.innerHTML = '<span class="fas fa-compress"></span>';
+            }else{
+                btn.innerHTML = '<span class="fas fa-expand"></span>';
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body></html>

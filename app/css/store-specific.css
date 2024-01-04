@@ -1,0 +1,396 @@
+/*palette 
+Cinnabar: darkish red
+#E43D40
+
+Coral: peach
+#F37970
+
+Red: pink~darkish
+#F85C70
+
+Rose Quartz: pink~light
+#FABEC0
+*/
+
+/*Author: Mr. Thabang Mposula 2021*/
+html {
+    background: #E43D40;
+}
+/*Custom - Scrollbar for html*/
+/* width */
+html::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+html::-webkit-scrollbar-track {
+    background: #E43D40!important;
+    padding-top: 5px;
+    margin: 10px 0;
+    border-radius: 50rem; /* 0 15px 15px 0*/
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+    background: #fff!important;
+    border-radius: 50rem;
+    border: solid 6px #E43D40;
+}
+
+/* end custom scrollbar*/
+
+.curtain {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left: 0;
+    background: #E43D40;
+    z-index: 11000;
+    color: white;
+}
+.curtain img {
+    margin-top: -40px !important;
+}
+.curtain p {
+    font-size: 8px;
+    color: #fff
+}
+
+.fixed-lr-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lr-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.lr-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lr-3.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.store-custom-navbar {
+    
+    /*background: rgb(255, 255, 255);*/
+    background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, rgba(228, 61, 64, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, rgba(228, 61, 64, 1) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, rgba(228, 61, 64, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#e43d40", GradientType=1);
+}
+
+.custom-navbar a {
+    color: #E43D40 !important;
+}
+
+#sub-custom-nav {
+    background: #E43D40 !important;
+    color: white !important;
+    transition: 0.5s;
+    overflow-x: hidden;
+}
+
+#sub-custom-nav a {
+    color: white;
+}
+
+#toggle-wallet-manager {
+    background: #E43D40 !important;
+    color: white !important;
+    transition: 0.5s;
+}
+
+.store-section-card-left {
+    min-height: 300px;
+    background: #F85C70;
+    border-radius: 25px 0 0 25px;
+}
+
+.store-section-card-right {
+    min-height: 300px;
+    background: #F85C70;
+    border-radius: 0 25px 25px 0;
+}
+
+/*sidebar style*/
+.store-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #E43D40;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 60px;
+    padding-bottom: 200px;
+    transition: 0.5s;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top-right-radius: 25px;
+    z-index: 2;
+}
+
+.store-sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Comfortaa', cursive !important;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/*.sidebar a:hover {
+    color: black;
+}*/
+
+.store-sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/*Custom - Scrollbar for sidebar*/
+/* width */
+.store-sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.store-sidebar::-webkit-scrollbar-track {
+    background: #FABEC0;
+    border-radius: 25px;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+/* Handle */
+.store-sidebar::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/* Handle on hover */
+.store-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgb(28, 105, 99);
+    width: 15px;
+}
+
+/* end custom scrollbar*/
+
+.store-closebtn:hover {
+    color: black !important;
+}
+
+.store-openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #E43D40 !important;
+    padding: 10px 15px;
+    border: none;
+    color: rgb(28, 105, 99);
+    border-radius: 15px !important;
+}
+
+.store-openbtn:hover {
+    color: white !important;
+    background-color: #E43D40;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+/*Product Cards*/
+.store-product-card {
+    border-radius: 25px !important;
+    transition: 0.5s;
+    background: white !important;
+    color: #E43D40;
+}
+
+.store-product-card:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.store-product-card-tag {
+    margin-top: -10px;
+    max-width: 100px !important;
+    height: auto !important;
+    background: #E43D40;
+    color: white;
+    border-bottom-left-radius: 0px !important;
+}
+
+.store-product-card-specs {
+    font-size: 10px;
+}
+
+.store-product-card-buttons {
+    background: white !important;
+    color: #E43D40 !important;
+    transition: 0.5s;
+}
+
+.store-product-card-buttons:hover {
+    background: #E43D40 !important;
+    color: white !important;
+}
+
+/**/
+#supplies-catagories {
+    
+}
+
+#supplies-catagories a {
+    color: white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #E43D40 !important;
+    background-color: #FABEC0;
+    border-radius: 0 50rem 50rem 50rem!important;
+}
+
+/*Custom - Scrollbar for h-scrolling-wrapper*/
+/* width */
+.h-scrolling-wrapper::-webkit-scrollbar {
+    height: 10px;
+}
+
+/* Track */
+.h-scrolling-wrapper::-webkit-scrollbar-track {
+    background: #FABEC0;
+    border-radius: 50rem;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+/* Handle */
+.h-scrolling-wrapper::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/* end custom scrollbar*/
+
+/*footer*/
+.footer {
+    background: #E43D40;
+    min-height: 600px;
+    padding-bottom: 20px;
+}
+
+#footer {
+    transition: 0.5s;
+}
+
+/*Fixed bottom Tab Navigation Bar*/
+.tab-nav {
+    max-height: 200px !important;
+    background: -moz-linear-gradient(90deg, rgba(228, 61, 64, .5) 0%, rgba(255, 255, 255, 1) 80%);
+    background: -webkit-linear-gradient(90deg, rgba(228, 61, 64, .5) 0%, rgba(255, 255, 255, 1) 80%);
+    background: linear-gradient(90deg, rgba(228, 61, 64, .5) 0%, rgba(255, 255, 255, 1) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#E43D40", endColorstr="#ffffff", GradientType=1);
+    border-top-right-radius: 25px;
+}
+
+.tab-nav a {
+    font-size: 18px;
+    /*2vw*/
+    color: #E43D40 !important;
+    transition: 0.3s;
+}
+
+.tab-nav a:hover {
+    border-bottom: solid 5px #E43D40;
+}
+
+.tab-nav button {
+    font-size: 2vw !important;
+}
+
+#tab-nav-copyright {
+    color: white !important;
+    font-size: 5px;
+    transition: 0.3s;
+}
+
+#tab-nav-copyright:hover {
+    font-size: 15px;
+}
+
+.focused {
+    border-bottom: solid 5px #E43D40;
+}
+
+/*:hover*/
+#goto-activity-app:hover {
+    border-left: solid 10px #FABEC0;
+}
+
+#goto-activity-store:hover {
+    border-left: solid 10px #FABEC0;
+}
+
+#goto-activity-social:hover {
+    border-left: solid 10px #FABEC0;
+}
+
+#goto-activity-blog:hover {
+    border-left: solid 10px #FABEC0;
+}
+
+#goto-activity-market:hover {
+    border-left: solid 10px #FABEC0;
+}
+
+.store-sidebar-text-logo-bg-hover:hover {
+    background: #E43D40!important;
+}
+
+/*wallet manager, discount coupons, shopping bag and checkout*//*Custom - Scrollbar for #chechout-items-list*/
+#chechout-items-list {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+/* width */
+#chechout-items-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#chechout-items-list::-webkit-scrollbar-track {
+    background: #FABEC0;
+    border-radius: 50rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Handle */
+#chechout-items-list::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}

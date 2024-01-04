@@ -1,0 +1,807 @@
+/*Author: Mr. Thabang Mposula 2021*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&family=Satisfy&family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap');
+
+/*small misc*/
+.fa-thumbtack {
+    transform: rotate(-40deg);
+}
+
+.readybtn {
+    margin-bottom: -2000px;
+    transition: 0.5s;
+}
+
+.descr-card {
+    border-radius: 25px;
+    background: white;
+    color: #202020;
+    overflow-y: auto;
+    max-height: 100vh!important;
+}
+.descr-card p {
+    font-size: 15px;
+}
+
+.descr-card textarea {
+    border-radius: 25px;
+}
+
+.descr-card ul {
+    border-radius: 25px!important;
+}
+
+.auto-pass {
+    
+}
+
+/*Custom - Scrollbar for html*/
+/* width */
+html::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+html::-webkit-scrollbar-track {
+    background: #fff!important;
+    padding-top: 5px;
+    margin: 10px 0;
+    border-radius: 50rem; /* 0 15px 15px 0*/
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+    background: rgb(28, 105, 99)!important;
+    border-radius: 50rem;
+}
+/* end custom scrollbar*/
+
+/*End of small mic*/
+
+.lw-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lw-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-lw-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lw-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-ld-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-dark-1.png)!important;
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.ld-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-dark-1.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-lp-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lp-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.lp-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lp-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.lg-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lg-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-lg-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lg-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-lr-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lr-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.lr-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lr-3.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif !important;
+    overflow-x: hidden;
+}
+
+.custom-navbar {
+    /*background: rgb(255, 255, 255);*/
+    background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, rgba(28, 105, 99, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, rgba(28, 105, 99, 1) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 30%, rgba(28, 105, 99, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#69a88d", GradientType=1);
+}
+
+.custom-navbar a {
+    color: rgb(28, 105, 99) !important;
+}
+
+.titles {
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+}
+
+.unica-one-font {
+    font-family: 'Unica One', cursive;
+}
+
+.montserrat-font {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.raleway-font {
+    font-family: 'Raleway', sans-serif;
+}
+
+.satisfy-font {
+    font-family: 'Satisfy', cursive;
+}
+
+.comfortaa-font {
+    font-family: 'Comfortaa', cursive;
+}
+
+.section-card-left {
+    min-height: 300px;
+    background: rgba(105, 168, 141, 1);
+    border-radius: 25px 0 0 25px;
+}
+
+.section-card-right {
+    min-height: 300px;
+    background: rgba(105, 168, 141, 1);
+    border-radius: 0 25px 25px 0;
+}
+
+/*sidebar style*/
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(28, 105, 99);
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 60px;
+    padding-bottom: 200px;
+    transition: 0.5s;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top-right-radius: 25px;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Comfortaa', cursive !important;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/*.sidebar a:hover {
+    color: black;
+}*/
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/*Custom - Scrollbar for sidebar*/
+/* width */
+.sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.sidebar::-webkit-scrollbar-track {
+    background: rgb(121, 186, 158);
+    border-radius: 25px;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+/* Handle */
+.sidebar::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/* Handle on hover */
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgb(28, 105, 99);
+    width: 15px;
+}
+
+/* end custom scrollbar*/
+
+.closebtn:hover {
+    color: black !important;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(28, 105, 99) !important;
+    padding: 10px 15px;
+    border: none;
+    color: rgb(28, 105, 99);
+    border-radius: 15px !important;
+}
+
+.openbtn:hover {
+    color: white !important;
+    background-color: rgb(28, 105, 99);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+#main {
+    transition: margin-left .5s; 
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+#goto-activity-app,
+#goto-activity-store,
+#goto-activity-social,
+#goto-activity-blog,
+#goto-activity-market {
+    transition: 0.5s;
+    border-bottom: solid 1px white;
+}
+
+/*span*/
+#goto-activity-app span {
+    color: rgb(28, 105, 99) !important;
+}
+
+#goto-activity-store span {
+    color: #E43D40 !important;
+}
+
+#goto-activity-social span {
+    color: #D3C02F !important;
+}
+
+#goto-activity-blog span {
+    color: orange !important;
+}
+
+#goto-activity-market span {
+    color: rebeccapurple!important;
+}
+
+.app-home-sidebar-text-logo-bg-hover:hover {
+    background: rgb(28, 105, 99) !important;
+}
+
+/*:hover*/
+#goto-activity-app:hover {
+    color: rgb(28, 105, 99) !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rgb(105, 168, 141);
+    background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+#goto-activity-store:hover {
+    color: #E43D40 !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rgb(105, 168, 141);
+    background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+#goto-activity-social:hover {
+    color: #D3C02F !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rgb(105, 168, 141);
+    background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+#goto-activity-blog:hover {
+    color: orange !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rgb(105, 168, 141);
+    background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+#goto-activity-market:hover {
+    color: rebeccapurple !important;
+    font-size: 30px;
+    text-decoration: none;
+    border-left: solid 10px rgb(105, 168, 141);
+    background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+
+/*footer*/
+.footer {
+    background: rgb(28, 105, 99);
+    min-height: 600px;
+    padding-bottom: 20px;
+}
+
+#footer {
+    transition: 0.5s;
+}
+
+#footer-collapse {
+    
+}
+
+#footer-collapse a {
+    border-radius: 15px;
+    background: white;
+}
+
+/*Fixed bottom Tab Navigation Bar*/
+.tab-nav {
+    max-height: 200px !important;
+    background: -moz-linear-gradient(90deg, rgba(28, 105, 99, .5) 0%, rgba(255, 255, 255, 1) 80%);
+    background: -webkit-linear-gradient(90deg, rgba(28, 105, 99, .5) 0%, rgba(255, 255, 255, 1) 80%);
+    background: linear-gradient(90deg, rgba(28, 105, 99, .5) 0%, rgba(255, 255, 255, 1) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#69a88d", endColorstr="#ffffff", GradientType=1);
+    border-top-right-radius: 25px;
+}
+
+.tab-nav a {
+    font-size: 18px;
+    /*2vw*/
+    color: rgb(28, 105, 99) !important;
+    transition: 0.3s;
+}
+
+.tab-nav a:hover {
+    border-bottom: solid 5px rgb(28, 105, 99);
+}
+
+.tab-nav button {
+    font-size: 2vw !important;
+}
+
+#tab-nav-copyright {
+    color: white !important;
+    font-size: 5px;
+    transition: 0.3s;
+}
+
+#tab-nav-copyright:hover {
+    font-size: 15px;
+}
+
+.focused {
+    border-bottom: solid 5px rgb(28, 105, 99);
+}
+
+/*sign up panel*/
+.create-user-account {
+    border-radius: 25px;
+    background: white;
+    color: rgb(28, 105, 99);
+    height: 100%
+}
+
+.create-user-account img {
+    border-radius: 25px;
+    background: rgb(28, 105, 99);
+}
+
+.create-user-account hr {
+    background: rgb(28, 105, 99);
+}
+
+/*horizontal scroll menu*/
+/*Horizontal scroll menu*/
+div.scrollmenu {
+    background-color: white;
+    /*#333*/
+    border-radius: 0 25px 25px 25px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+
+    transition: background-color .3s, color .3s;
+}
+
+div.scrollmenu p {
+    display: inline-block;
+    color: rgb(28, 105, 99);
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: rgb(28, 105, 99);
+    color: white;
+}
+
+/*end/ horizontal scroll menu*/
+
+/*Custom - Scrollbar for h-scroll*/
+/* width */
+.scrollmenu::-webkit-scrollbar {
+    height: 10px;
+    transition: width .3s;
+}
+
+/* Track */
+.scrollmenu::-webkit-scrollbar-track {
+    background: rgb(0, 51, 153);
+    border-radius: 25px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* Handle */
+.scrollmenu::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+}
+
+/* Handle on hover */
+.scrollmenu::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 192, 0);
+    height: 10px;
+}
+
+/* end custom scrollbar*/
+
+/*Custom - Minimal Scrollbar for v-scroll*/
+/* width */
+.minimal-v-scroll::-webkit-scrollbar {
+    width: 2px !important;
+}
+
+/* Track */
+.minimal-v-scroll::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 50rem !important;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* Handle */
+.minimal-v-scroll::-webkit-scrollbar-thumb {
+    background: white !important;
+    border-radius: 50rem !important;
+}
+
+/* end custom scrollbar*/
+
+
+/*Custom - Minimal Scrollbar for h-scroll*/
+/* width */
+.minimal-h-scroll::-webkit-scrollbar {
+    height:2px !important;
+}
+
+/* Track */
+.minimal-h-scroll::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 50rem !important;
+}
+
+/* Handle */
+.minimal-h-scroll::-webkit-scrollbar-thumb {
+    background: white !important;
+    border-radius: 50rem !important;
+}
+
+/* end custom scrollbar*/
+
+
+/*Product Cards*/
+.product-card {
+    border-radius: 25px !important;
+    transition: 0.5s;
+    background: rgb(28, 105, 99) !important;
+}
+
+.product-card:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.product-card-tag {
+    margin-top: -10px;
+    max-width: 100px !important;
+    height: auto !important;
+    color: rgb(28, 105, 99);
+    border-bottom-left-radius: 0px !important;
+}
+
+.product-card-specs {
+    font-size: 10px;
+}
+
+.product-card-buttons {
+    background: white !important;
+    color: rgb(28, 105, 99) !important;
+    transition: 0.5s;
+}
+
+.product-card-buttons:hover {
+    background: rgb(28, 105, 99) !important;
+    color: white !important;
+}
+
+/*profile banner*/
+.profile-banner {
+    min-height: 300px;
+    width: 100%;
+    background: url(../media/users/user_default/banner/kbae.jpg);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: local;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.profile-banner-img-bg-only {
+    background: url(../media/users/user_default/banner/kbae.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
+    /* Add the blur effect */
+    backdrop-filter: blur(8px);
+}
+
+.profile-card {
+    border-radius: 25px;
+    background: rgb(28, 105, 99);
+    color: white;
+}
+
+.profile-card button {
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.profile-card button:hover {
+    color: rgb(28, 105, 99);
+    font-size: 25px;
+    background: white;
+}
+
+.profile-updates-card {
+    border-radius: 0 25px 25px 25px !important;
+    background: white;
+    color: rgb(28, 105, 99);
+}
+
+.profile-updates-card a {
+    color: rgb(28, 105, 99);
+}
+
+.profile-update-card-commands {
+    background: rgb(28, 105, 99);
+    border-radius: 0 25px 25px 25px;
+    color: white !important;
+}
+
+.profile-update-card-commands button {
+    color: white !important;
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+.profile-update-card-commands button:hover {
+    color: white !important;
+    font-size: 30px;
+}
+
+.myupdate-media-att {
+    height: 200px !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    border-radius: 25px !important;
+    transition: 0.5s;
+}
+
+/*Horizontal scrolling*/
+.h-scrolling-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.h-scroll-card {
+    display: inline-block;
+}
+
+/*admarket cards*/
+.admarket-cards {
+    border-radius: 25px !important;
+    background: #202020;
+    color: white;
+}
+.admarket-cards a {
+    color: rebeccapurple;
+}
+.admarket-cards h5 {
+    color: rebeccapurple;
+}
+#admarket-post-image img {
+    border-radius: 0 25px 25px 25px;
+    border: solid 5px rebeccapurple;
+    height: 70px;
+    width: auto;
+    transition: 0.5s;
+}
+#admarket-post-image img:hover {
+    width: 80%;
+    height: auto;
+}
+
+.admarket-send-author-msg-button {
+    background: white;
+    transition: .3s;
+    font-size: 1.5vw;
+}
+
+.admarket-send-author-msg-button:hover {
+    background: rebeccapurple;
+    color: white;
+}
+
+#signin-modal {
+    border-radius: 25px!important;
+    overflow: hidden!important;
+}

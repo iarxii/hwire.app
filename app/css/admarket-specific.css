@@ -1,0 +1,466 @@
+/*palette 
+#663399 - rebeccapurple
+#fff - white
+#202020 - dark
+*/
+
+/*Author: Mr. Thabang Mposula 2021*/
+html, body {
+    background: #202020;
+}
+
+/*Custom - Scrollbar for html*/
+/* width */
+html::-webkit-scrollbar {
+    width: 20px;
+    color: rebeccapurple;
+}
+
+/* Track */
+html::-webkit-scrollbar-track {
+    background: #202020 !important;
+    padding-top: 5px;
+    margin: 10px 0;
+    border-radius: 50rem;
+    /* 0 15px 15px 0*/
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+    background: rebeccapurple !important;
+    border-radius: 50rem;
+    border: solid 6px #202020;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: white !important;
+    border-radius: 50rem;
+    border: solid 6px #202020;
+}
+
+/* end custom scrollbar*/
+
+.curtain {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: #202020;
+    z-index: 11000;
+    color: white;
+}
+
+.curtain img {
+    margin-top: -40px !important;
+}
+
+.curtain p {
+    font-size: 8px;
+    color: #663399
+}
+
+.fixed-ld-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-dark-1.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.ld-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-dark-1.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.fixed-lp-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lp-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.lp-logo-mesh-div-bg {
+    background: url(../media/general/icons/icon-mesh-lp-2.png);
+    /*linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../media/certbg.jpg)*/
+    /* no-repeat center center fixed*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.store-custom-navbar {
+
+    background: rgb(32, 32, 32);
+    background: -moz-linear-gradient(90deg, rgba(32, 32, 32, 1) 30%, rgba(102, 51, 153, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(32, 32, 32, 1) 30%, rgba(102, 51, 153, 1) 100%);
+    background: linear-gradient(90deg, rgba(32, 32, 32, 1) 30%, rgba(102, 51, 153, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202020", endColorstr="#663399", GradientType=1);
+}
+
+.custom-navbar a {
+    color: #E43D40 !important;
+}
+
+#sub-custom-nav {
+    background: rebeccapurple !important;
+    color: white !important;
+    transition: 0.5s;
+    overflow-x: hidden;
+}
+
+#sub-custom-nav a {
+    color: white;
+}
+
+#toggle-wallet-manager {
+    background: rebeccapurple !important;
+    color: white !important;
+    transition: 0.5s;
+}
+
+.store-section-card-left {
+    min-height: 300px;
+    background: #202020;
+    border-radius: 25px 0 0 25px;
+}
+
+.store-section-card-right {
+    min-height: 300px;
+    background: #202020;
+    border-radius: 0 25px 25px 0;
+}
+
+/*sidebar style*/
+.store-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rebeccapurple;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 60px;
+    padding-bottom: 200px;
+    transition: 0.5s;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top-right-radius: 25px;
+    z-index: 2;
+}
+
+.store-sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Comfortaa', cursive !important;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/*.sidebar a:hover {
+    color: black;
+}*/
+
+.store-sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/*Custom - Scrollbar for sidebar*/
+/* width */
+.store-sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.store-sidebar::-webkit-scrollbar-track {
+    background: rgba(225, 225, 225, .5);
+    border-radius: 25px;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+/* Handle */
+.store-sidebar::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/* Handle on hover */
+.store-sidebar::-webkit-scrollbar-thumb:hover {
+    /*background: rgb(28, 105, 99);*/
+    width: 15px;
+}
+
+/* end custom scrollbar*/
+
+.store-closebtn:hover {
+    color: red !important;
+}
+
+.store-openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    color: rebeccapurple !important;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px !important;
+}
+
+.store-openbtn:hover {
+    color: white !important;
+    background-color: rebeccapurple;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.store-product-card-buttons {
+    background: white !important;
+    color: rebeccapurple!important;
+    transition: 0.5s;
+}
+
+.store-product-card-buttons:hover {
+    background: rebeccapurple !important;
+    color: white !important;
+}
+
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*Custom - Scrollbar for h-scrolling-wrapper*/
+/* width */
+.h-scrolling-wrapper::-webkit-scrollbar {
+    height: 10px;
+}
+
+/* Track */
+.h-scrolling-wrapper::-webkit-scrollbar-track {
+    background: rebeccapurple;
+    border-radius: 50rem;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+/* Handle */
+.h-scrolling-wrapper::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/* end custom scrollbar*/
+
+/*:hover*/
+#goto-activity-app:hover {
+    background: #202020!important;
+    border-left: solid 10px rebeccapurple;
+    border-bottom: 0;
+}
+
+#goto-activity-store:hover {
+    background: #202020!important;
+    border-left: solid 10px rebeccapurple;
+    border-bottom: 0;
+}
+
+#goto-activity-social:hover {
+    background: #202020!important;
+    border-left: solid 10px rebeccapurple;
+    border-bottom: 0;
+}
+
+#goto-activity-blog:hover {
+    background: #202020!important;
+    border-left: solid 10px rebeccapurple;
+    border-bottom: 0;
+}
+
+#goto-activity-market:hover {
+    background: #202020!important;
+    border-left: solid 10px rebeccapurple;
+    border-bottom: 0;
+}
+
+.store-sidebar-text-logo-bg-hover:hover {
+    border-bottom: 0;
+    background: rebeccapurple !important;
+}
+
+/*wallet manager, discount coupons, shopping bag and checkout*/
+/*Custom - Scrollbar for #chechout-items-list*/
+#chechout-items-list {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+/* width */
+#chechout-items-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#chechout-items-list::-webkit-scrollbar-track {
+    background: rebeccapurple;
+    border-radius: 50rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Handle */
+#chechout-items-list::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/*board panels*/
+.board-panels {
+    border-radius: 25px;
+    background: rgba(102, 51, 153, .6);
+}
+
+/*ad-market-stream-cards*/
+#admarket-post-image img {
+    border-radius: 0 25px 25px 25px;
+    border: solid 5px white;
+    height: 300px;
+    width: auto;
+    transition: 0.5s;
+}
+#admarket-post-image img:hover {
+    width: 95%;
+    height: auto;
+}
+
+
+/**/
+/*.app-home-sidebar-text-logo-bg-hover:hover {
+    border-left: solid 10px #202020!important;
+    background: rebeccapurple !important;
+}
+#goto-activity-app:hover {
+    color: rgb(28, 105, 99) !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rebeccapurple;
+    background: #202020;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#goto-activity-store:hover {
+    color: #E43D40 !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rebeccapurple;
+    background: #202020;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#goto-activity-social:hover {
+    color: #D3C02F !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rebeccapurple;
+    background: #202020;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#goto-activity-blog:hover {
+    color: orange !important;
+    font-size: 35px;
+    text-decoration: none;
+    border-left: solid 10px rebeccapurple;
+    background: #202020;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#goto-activity-market:hover {
+    color: rebeccapurple !important;
+    font-size: 30px;
+    text-decoration: none;
+    border-left: solid 10px rebeccapurple;
+    background: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-top: 0;
+    border-bottom: 0;
+}*/
+
+/*wallet manager, discount coupons, shopping bag and checkout*//*Custom - Scrollbar for #chechout-items-list*/
+#chechout-items-list {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+/* width */
+#chechout-items-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#chechout-items-list::-webkit-scrollbar-track {
+    background: rebeccapurple;
+    border-radius: 50rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Handle */
+#chechout-items-list::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+/**/
+.charity-posts-card {
+    border-radius: 25px!important;
+}

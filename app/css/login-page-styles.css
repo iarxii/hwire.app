@@ -1,0 +1,70 @@
+html,body {
+    background: rgb(28,105,99);
+    margin: 0!important;
+    padding: 0!important;
+}
+body::-webkit-scrollbar {
+    width: 0px;
+}
+/*Custom - Scrollbar for html*/
+/* width */
+html::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+html::-webkit-scrollbar-track {
+    background: rgb(28,105,99)!important;
+    padding-top: 5px;
+    margin: 10px 0;
+    border-radius: 50rem;  /*0 15px 15px 0*/
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+    background: #fff!important;
+    border-radius: 50rem;
+    border: solid 6px rgb(28,105,99);
+}
+
+/* end custom scrollbar*/
+
+.curtain {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left: 0;
+    background: rgb(28,105,99);
+    z-index: 11000;
+    color: white;
+}
+.curtain img {
+    margin-top: -30px !important;
+}
+.curtain p {
+    font-size: 8px;
+    color: #fff
+}
+
+.h-links {
+    cursor: pointer;
+    transition: 0.5s;
+}
+.h-links:hover {
+    font-size: 7vh!important;
+}
+
+.color-switch {
+    color: white;
+    transition: 0.5s;
+}
+
+#login-page-signup-msg {
+    transition: 0.3s;
+}
+#login-page-signup-msg:hover {
+    border-radius: 0 25px 25px 25px!important;
+    color: black!important;
+    background: white!important;
+}
